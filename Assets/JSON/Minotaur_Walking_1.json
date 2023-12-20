@@ -1,0 +1,165 @@
+{
+  "frames": {
+	"Minotaur_01_Walking_000.png": {
+      "frame": {
+        "x": 0,
+        "y": 1232,
+        "w": 471,
+        "h": 408
+      }
+    },
+    "Minotaur_01_Walking_001.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 454,
+        "h": 411
+      }
+    },
+	"Minotaur_01_Walking_002.png": {
+      "frame": {
+        "x": 354,
+        "y": 411,
+        "w": 438,
+        "h": 409
+      }
+    },
+	"Minotaur_01_Walking_003.png": {
+      "frame": {
+        "x": 792,
+        "y": 409,
+        "w": 426,
+        "h": 403
+      }
+    },
+	"Minotaur_01_Walking_004.png": {
+      "frame": {
+        "x": 1608,
+        "y": 797,
+        "w": 412,
+        "h": 395
+      }
+    },
+	"Minotaur_01_Walking_005.png": {
+      "frame": {
+        "x": 1195,
+        "y": 812,
+        "w": 413,
+        "h": 397
+      }
+    },
+	"Minotaur_01_Walking_006.png": {
+      "frame": {
+        "x": 833,
+        "y": 1223,
+        "w": 406,
+        "h": 400
+      }
+    },
+	"Minotaur_01_Walking_007.png": {
+      "frame": {
+        "x": 802,
+        "y": 0,
+        "w": 385,
+        "h": 397
+      }
+    },
+	"Minotaur_01_Walking_008.png": {
+      "frame": {
+        "x": 471,
+        "y": 1224,
+        "w": 362,
+        "h": 404
+      }
+    },
+	"Minotaur_01_Walking_009.png": {
+      "frame": {
+        "x": 454,
+        "y": 0,
+        "w": 348,
+        "h": 409
+      }
+    },
+    "Minotaur_01_Walking_010.png": {
+      "frame": {
+        "x": 0,
+        "y": 411,
+        "w": 354,
+        "h": 411
+      }
+    },
+    "Minotaur_01_Walking_011.png": {
+      "frame": {
+        "x": 0,
+        "y": 822,
+        "w": 361,
+        "h": 410
+      }
+    },
+    "Minotaur_01_Walking_012.png": {
+      "frame": {
+        "x": 361,
+        "y": 820,
+        "w": 384,
+        "h": 404
+      }
+    },
+	"Minotaur_01_Walking_013.png": {
+      "frame": {
+        "x": 1239,
+        "y": 400,
+        "w": 404,
+        "h": 397
+      }
+    },
+	"Minotaur_01_Walking_014.png": {
+      "frame": {
+        "x": 1239,
+        "y": 1209,
+        "w": 418,
+        "h": 395
+      }
+    },
+	"Minotaur_01_Walking_015.png": {
+      "frame": {
+        "x": 1195,
+        "y": 0,
+        "w": 424,
+        "h": 400
+      }
+    },
+	"Minotaur_01_Walking_016.png": {
+      "frame": {
+        "x": 1619,
+        "y": 0,
+        "w": 436,
+        "h": 396
+      }
+    },
+    "Minotaur_01_Walking_017.png": {
+      "frame": {
+        "x": 745,
+        "y": 820,
+        "w": 450,
+        "h": 403
+      }
+    }
+  },
+  "hitbox": {
+	"offsetX": -50,
+	"offsetY": -10,
+    "w": 300,
+    "h": 356
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Boss_Walking_1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2055,
+      "h": 1640
+    },
+    "scale": 1
+  }
+}

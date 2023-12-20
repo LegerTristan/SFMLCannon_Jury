@@ -1,0 +1,117 @@
+{
+  "frames": {
+    "Wraith_01_Moving Forward_000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_001.png": {
+      "frame": {
+        "x": 0,
+        "y": 420,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_002.png": {
+      "frame": {
+        "x": 0,
+        "y": 840,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_003.png": {
+      "frame": {
+        "x": 0,
+        "y": 1260,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_004.png": {
+      "frame": {
+        "x": 520,
+        "y": 0,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_005.png": {
+      "frame": {
+        "x": 520,
+        "y": 420,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_006.png": {
+      "frame": {
+        "x": 520,
+        "y": 840,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_007.png": {
+      "frame": {
+        "x": 520,
+        "y": 1260,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_008.png": {
+      "frame": {
+        "x": 1040,
+        "y": 0,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_009.png": {
+      "frame": {
+        "x": 1040,
+        "y": 420,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_010.png": {
+      "frame": {
+        "x": 1040,
+        "y": 840,
+        "w": 520,
+        "h": 420
+      }
+    },
+    "Wraith_01_Moving Forward_011.png": {
+      "frame": {
+        "x": 1040,
+        "y": 1260,
+        "w": 520,
+        "h": 420
+      }
+    }
+  },
+  "hitbox": {
+	"offsetX": 3,
+	"offsetY": 8,
+    "w": 200,
+    "h": 285
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Wraith_Walking_1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1560,
+      "h": 1680
+    },
+    "scale": 1
+  }
+}

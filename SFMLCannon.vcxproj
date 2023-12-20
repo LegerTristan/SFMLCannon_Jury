@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8db91a78-e3f0-40aa-a2ac-f4c3c7f5e05f}</ProjectGuid>
+    <RootNamespace>SFMLCannon</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SFML_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Enemies\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Enemies\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Factories\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Factories\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Interfaces\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Components\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Components\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Cannons\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Cannons\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\UI\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\UI\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\GameStates\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\GameStates\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Managers\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Managers\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\SFML-2.6.1\include;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Utils\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\Public</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Tristan\Desktop\SFMLCannon\Includes\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;freetype.lib;opengl32.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SFML_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Enemies\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Enemies\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Factories\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Factories\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Interfaces\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Components\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Components\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Cannons\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Entities\Cannons\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\UI\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\UI\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\GameStates\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\GameStates\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Managers\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Managers\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\SFML-2.6.1\include;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Utils\Public;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\Private;C:\Users\Tristan\Desktop\SFMLCannon\Includes\Game\Public</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Tristan\Desktop\SFMLCannon\Includes\SFML-2.6.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;freetype.lib;opengl32.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Includes\Components\Private\AnimationComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\CannonShootComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\CollisionComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\FloatMoveComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\InputRotationComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\MoveComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\ParabolicMoveComponent.cpp" />
+    <ClCompile Include="Includes\Components\Private\StraightMoveComponent.cpp" />
+    <ClCompile Include="Includes\Entities\Cannons\Private\Cannon.cpp" />
+    <ClCompile Include="Includes\Entities\Cannons\Private\CannonBall.cpp" />
+    <ClCompile Include="Includes\Entities\Enemies\Private\Enemy.cpp" />
+    <ClCompile Include="Includes\Entities\Enemies\Private\FloatEnemy.cpp" />
+    <ClCompile Include="Includes\Entities\Enemies\Private\GroundEnemy.cpp" />
+    <ClCompile Include="Includes\Entities\Private\Entity.cpp" />
+    <ClCompile Include="Includes\Entities\Private\KillZone.cpp" />
+    <ClCompile Include="Includes\Factories\Private\CannonBallFactory.cpp" />
+    <ClCompile Include="Includes\Game\GameStates\Private\GameState.cpp" />
+    <ClCompile Include="Includes\Game\GameStates\Private\LevelState.cpp" />
+    <ClCompile Include="Includes\Game\GameStates\Private\RetryState.cpp" />
+    <ClCompile Include="Includes\Game\Private\Game.cpp" />
+    <ClCompile Include="Includes\Managers\Private\CollisionManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\EntityManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\InputManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\Player.cpp" />
+    <ClCompile Include="Includes\Managers\Private\ScoreManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\TextureManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\TimeManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\WaveManager.cpp" />
+    <ClCompile Include="Includes\UI\Private\DefenceHUD.cpp" />
+    <ClCompile Include="Includes\UI\Private\Gauge.cpp" />
+    <ClCompile Include="Includes\UI\Private\HUD.cpp" />
+    <ClCompile Include="Includes\UI\Private\LifeBar.cpp" />
+    <ClCompile Include="Includes\UI\Private\RetryHUD.cpp" />
+    <ClCompile Include="SFMLCannon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Includes\Components\Public\AnimationComponent.h" />
+    <ClInclude Include="Includes\Components\Public\CannonShootComponent.h" />
+    <ClInclude Include="Includes\Components\Public\CollisionComponent.h" />
+    <ClInclude Include="Includes\Components\Public\ComponentType.h" />
+    <ClInclude Include="Includes\Components\Public\EntityComponent.h" />
+    <ClInclude Include="Includes\Components\Public\FloatMoveComponent.h" />
+    <ClInclude Include="Includes\Components\Public\InputRotationComponent.h" />
+    <ClInclude Include="Includes\Components\Public\MoveComponent.h" />
+    <ClInclude Include="Includes\Components\Public\ParabolicMoveComponent.h" />
+    <ClInclude Include="Includes\Components\Public\StraightMoveComponent.h" />
+    <ClInclude Include="Includes\Components\Public\TimerComponent.h" />
+    <ClInclude Include="Includes\Entities\Cannons\Public\Cannon.h" />
+    <ClInclude Include="Includes\Entities\Cannons\Public\CannonBall.h" />
+    <ClInclude Include="Includes\Entities\Enemies\Public\Enemy.h" />
+    <ClInclude Include="Includes\Entities\Enemies\Public\FloatEnemy.h" />
+    <ClInclude Include="Includes\Entities\Enemies\Public\GroundEnemy.h" />
+    <ClInclude Include="Includes\Entities\Public\Entity.h" />
+    <ClInclude Include="Includes\Entities\Public\EntityType.h" />
+    <ClInclude Include="Includes\Entities\Public\KillZone.h" />
+    <ClInclude Include="Includes\Factories\Public\CannonBallFactory.h" />
+    <ClInclude Include="Includes\Factories\Public\GolemFactory.h" />
+    <ClInclude Include="Includes\Factories\Public\WraithFactory.h" />
+    <ClInclude Include="Includes\Game\GameStates\Public\GameState.h" />
+    <ClInclude Include="Includes\Game\GameStates\Public\LevelState.h" />
+    <ClInclude Include="Includes\Game\GameStates\Public\RetryState.h" />
+    <ClInclude Include="Includes\Game\Public\Game.h" />
+    <ClInclude Include="Includes\Interfaces\Public\IDelegate.h" />
+    <ClInclude Include="Includes\Interfaces\Public\IEntityFactory.h" />
+    <ClInclude Include="Includes\Interfaces\Public\IEventDelegate.h" />
+    <ClInclude Include="Includes\Interfaces\Public\IPoolItem.h" />
+    <ClInclude Include="Includes\Managers\Public\CollisionManager.h" />
+    <ClInclude Include="Includes\Managers\Public\EntityManager.h" />
+    <ClInclude Include="Includes\Managers\Public\InputManager.h" />
+    <ClInclude Include="Includes\Managers\Public\Player.h" />
+    <ClInclude Include="Includes\Managers\Public\ScoreManager.h" />
+    <ClInclude Include="Includes\Managers\Public\TextureManager.h" />
+    <ClInclude Include="Includes\Managers\Public\TimeManager.h" />
+    <ClInclude Include="Includes\Managers\Public\WaveManager.h" />
+    <ClInclude Include="Includes\UI\Public\DefenceHUD.h" />
+    <ClInclude Include="Includes\UI\Public\Gauge.h" />
+    <ClInclude Include="Includes\UI\Public\HUD.h" />
+    <ClInclude Include="Includes\UI\Public\LifeBar.h" />
+    <ClInclude Include="Includes\UI\Public\RetryHUD.h" />
+    <ClInclude Include="Includes\Utils\Public\Constants.h" />
+    <ClInclude Include="Includes\Utils\Public\json.hpp" />
+    <ClInclude Include="Includes\Utils\Public\ObjectPool.h" />
+    <ClInclude Include="Includes\Utils\Public\Singleton.h" />
+    <ClInclude Include="Includes\Utils\Public\Utilities.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

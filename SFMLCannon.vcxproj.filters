@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utils">
+      <UniqueIdentifier>{64aff7fb-fcd4-4f74-8578-250c8ee75bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game">
+      <UniqueIdentifier>{0bf2b3ad-1e61-4d7d-8635-22828c5b549b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game">
+      <UniqueIdentifier>{4e74aca9-c2d4-441b-b1b3-4365ebd937e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Managers">
+      <UniqueIdentifier>{a667bca7-36d4-4b8d-8d41-d0fe767e9f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Managers">
+      <UniqueIdentifier>{a53f9d4f-aff1-4d9c-924a-d5088333816b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Game\GameStates">
+      <UniqueIdentifier>{1c996dbd-a8b8-4042-b788-f265453be8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Game\GameStates">
+      <UniqueIdentifier>{17989d0c-6d3a-40d4-b51f-0f2e24312852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\UI">
+      <UniqueIdentifier>{c24845ac-a2cb-472a-974d-1c05b5682f9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\UI">
+      <UniqueIdentifier>{5b868e74-12d5-495a-ba84-11a80cbd82ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Entities">
+      <UniqueIdentifier>{8875cab5-9686-474d-b2ff-65dd094187e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Entities">
+      <UniqueIdentifier>{b4638805-aa1c-48e9-bd78-f38decbb12b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Entities\Cannons">
+      <UniqueIdentifier>{62e8299a-b737-435d-a9db-7a49695a2818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Entities\Cannons">
+      <UniqueIdentifier>{ba2f29de-7d1f-4b1b-aceb-98cdfd726c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Components">
+      <UniqueIdentifier>{7a16a2f5-9df9-44cc-b5fb-cc4b0bc75b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Components">
+      <UniqueIdentifier>{2f3c57de-50a5-4860-83ef-f886f8114667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Interfaces">
+      <UniqueIdentifier>{a051658a-fb49-403e-a881-523a78b33b37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Factories">
+      <UniqueIdentifier>{0d377bf2-58f9-4f04-99be-7f2fe6193a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Factories">
+      <UniqueIdentifier>{630ad03c-f96c-4cfe-a5bb-67facd77922d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Entities\Enemies">
+      <UniqueIdentifier>{66eb14d9-7edd-4fac-a229-6f99177b5aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Entities\Enemies">
+      <UniqueIdentifier>{f2f1008d-0bf7-4ac3-993a-33ea5bf80a1d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SFMLCannon.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Game\Private\Game.cpp">
+      <Filter>Fichiers sources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\TimeManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Game\GameStates\Private\GameState.cpp">
+      <Filter>Fichiers sources\Game\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\TextureManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Game\GameStates\Private\LevelState.cpp">
+      <Filter>Fichiers sources\Game\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\HUD.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Cannons\Private\Cannon.cpp">
+      <Filter>Fichiers sources\Entities\Cannons</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\InputManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\InputRotationComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\CannonShootComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\Gauge.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Factories\Private\CannonBallFactory.cpp">
+      <Filter>Fichiers sources\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Private\Entity.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Cannons\Private\CannonBall.cpp">
+      <Filter>Fichiers sources\Entities\Cannons</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\EntityManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\MoveComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\ParabolicMoveComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\LifeBar.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\Player.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\WaveManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Enemies\Private\Enemy.cpp">
+      <Filter>Fichiers sources\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Enemies\Private\FloatEnemy.cpp">
+      <Filter>Fichiers sources\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Enemies\Private\GroundEnemy.cpp">
+      <Filter>Fichiers sources\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\FloatMoveComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\StraightMoveComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\AnimationComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Components\Private\CollisionComponent.cpp">
+      <Filter>Fichiers sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\CollisionManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Entities\Private\KillZone.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Game\GameStates\Private\RetryState.cpp">
+      <Filter>Fichiers sources\Game\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\DefenceHUD.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\RetryHUD.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\ScoreManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Includes\Utils\Public\Singleton.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Game\Public\Game.h">
+      <Filter>Fichiers d%27en-tête\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Utils\Public\Constants.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\TimeManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Game\GameStates\Public\GameState.h">
+      <Filter>Fichiers d%27en-tête\Game\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\TextureManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Game\GameStates\Public\LevelState.h">
+      <Filter>Fichiers d%27en-tête\Game\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\HUD.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Utils\Public\Utilities.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Cannons\Public\Cannon.h">
+      <Filter>Fichiers d%27en-tête\Entities\Cannons</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\InputManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\InputRotationComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\CannonShootComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\Gauge.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Interfaces\Public\IEntityFactory.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Factories\Public\CannonBallFactory.h">
+      <Filter>Fichiers d%27en-tête\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Public\Entity.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Public\EntityType.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Cannons\Public\CannonBall.h">
+      <Filter>Fichiers d%27en-tête\Entities\Cannons</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\EntityManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Interfaces\Public\IDelegate.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Interfaces\Public\IEventDelegate.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Interfaces\Public\IPoolItem.h">
+      <Filter>Fichiers d%27en-tête\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Utils\Public\ObjectPool.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\MoveComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\EntityComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\ParabolicMoveComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\LifeBar.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\Player.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\WaveManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\TimerComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Factories\Public\GolemFactory.h">
+      <Filter>Fichiers d%27en-tête\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Factories\Public\WraithFactory.h">
+      <Filter>Fichiers d%27en-tête\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Enemies\Public\Enemy.h">
+      <Filter>Fichiers d%27en-tête\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Enemies\Public\FloatEnemy.h">
+      <Filter>Fichiers d%27en-tête\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Enemies\Public\GroundEnemy.h">
+      <Filter>Fichiers d%27en-tête\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\FloatMoveComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\StraightMoveComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\AnimationComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Utils\Public\json.hpp">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\CollisionComponent.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\CollisionManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Components\Public\ComponentType.h">
+      <Filter>Fichiers d%27en-tête\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Entities\Public\KillZone.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\DefenceHUD.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Game\GameStates\Public\RetryState.h">
+      <Filter>Fichiers d%27en-tête\Game\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\RetryHUD.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\ScoreManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

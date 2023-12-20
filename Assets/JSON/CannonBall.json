@@ -1,0 +1,8 @@
+{
+  "hitbox": {
+	"offsetX": 0,
+	"offsetY": 0,
+    "w": 80,
+    "h": 80
+  }
+}

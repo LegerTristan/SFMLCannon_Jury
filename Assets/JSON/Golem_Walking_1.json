@@ -1,0 +1,165 @@
+{
+  "frames": {
+    "Golem_01_Walking_000.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_001.png": {
+      "frame": {
+        "x": 0,
+        "y": 480,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_002.png": {
+      "frame": {
+        "x": 0,
+        "y": 960,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_003.png": {
+      "frame": {
+        "x": 0,
+        "y": 1440,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_004.png": {
+      "frame": {
+        "x": 720,
+        "y": 0,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_005.png": {
+      "frame": {
+        "x": 720,
+        "y": 480,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_006.png": {
+      "frame": {
+        "x": 720,
+        "y": 960,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_007.png": {
+      "frame": {
+        "x": 720,
+        "y": 1440,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_008.png": {
+      "frame": {
+        "x": 1440,
+        "y": 0,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_009.png": {
+      "frame": {
+        "x": 1440,
+        "y": 480,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_010.png": {
+      "frame": {
+        "x": 1440,
+        "y": 960,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_011.png": {
+      "frame": {
+        "x": 1440,
+        "y": 1440,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_012.png": {
+      "frame": {
+        "x": 2160,
+        "y": 0,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_013.png": {
+      "frame": {
+        "x": 2880,
+        "y": 0,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_014.png": {
+      "frame": {
+        "x": 2160,
+        "y": 480,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_015.png": {
+      "frame": {
+        "x": 2880,
+        "y": 480,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_016.png": {
+      "frame": {
+        "x": 2160,
+        "y": 960,
+        "w": 720,
+        "h": 480
+      }
+    },
+    "Golem_01_Walking_017.png": {
+      "frame": {
+        "x": 2160,
+        "y": 1440,
+        "w": 720,
+        "h": 480
+      }
+    }
+  },
+  "hitbox": {
+	"offsetX": -35,
+	"offsetY": -10,
+    "w": 300,
+    "h": 356
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Golem_Walking_1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 3600,
+      "h": 1920
+    },
+    "scale": 1
+  }
+}
