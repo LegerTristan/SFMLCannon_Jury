@@ -42,7 +42,7 @@ public:
 	/// Update the current time of the timeline.
     /// Call HandleEvent method and reset the component if it reachs his duration (if it has one).
 	/// </summary>
-	void UpdateTimeline(const float _dt)
+	void UpdateTimer(const float _dt)
 	{
 		if (!isActive)
 			return;

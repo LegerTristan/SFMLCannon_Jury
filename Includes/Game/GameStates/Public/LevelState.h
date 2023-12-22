@@ -35,6 +35,10 @@ public:
 	/// </summary>
 	void Update(sf::RenderWindow& window, const float& dt) override final;
 
+protected:
+
+	virtual void EndState() override final;
+
 private:
 
 #pragma region Properties
@@ -71,13 +75,11 @@ private:
 	/// Used for killing them.
 	/// </summary>
 	sptr<KillZone> enemiesKillZone;
-
-	bool endStateWhenEndLoop = false;
 #pragma endregion
 
-	inline void PreparteEndState() { endStateWhenEndLoop = true; }
-
-	void EndState();
+	bool endStateAtNextFrame = false;
 #pragma endregion
+
+	inline void PreparteEndState() { endStateAtNextFrame = true; }
 };
 

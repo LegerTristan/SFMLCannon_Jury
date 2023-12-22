@@ -22,12 +22,12 @@ WaveManager::WaveManager(sptr<EntityManager> _entityManager) :
 
 void WaveManager::Update(const float& _dt)
 {
-	enemiesSpawnTimeline->UpdateTimeline(_dt);
+	enemiesSpawnTimeline->UpdateTimer(_dt);
 }
 
 inline void WaveManager::IncreaseEnemyNbrBehavior(const EEntityType& _type)
 {
-	if (_type == EEntityType::CANNON_BALL)
+	if (_type <= EEntityType::CANNON_BALL)
 		return;
 
 	currentEnemiesNbr++;
@@ -35,7 +35,7 @@ inline void WaveManager::IncreaseEnemyNbrBehavior(const EEntityType& _type)
 
 inline void WaveManager::DecreaseEnemyNbrBehavior(const EEntityType& _type)
 {
-	if (_type == EEntityType::CANNON_BALL)
+	if (_type <= EEntityType::CANNON_BALL)
 		return;
 
 	currentEnemiesNbr--;

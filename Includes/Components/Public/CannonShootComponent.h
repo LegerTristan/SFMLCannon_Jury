@@ -22,24 +22,28 @@ public:
 
 	void Update(const float& dt);
 
-	inline void StartLoad() { isLoading = true; }
-
-	void Fire();
+	void Disable();
 
 private:
 
 	uptr<Action<const float&>> onLoadUp;
 	uptr<Action<const float&>> onFire;
 
-	float loadSpeed = 1.0f,
-		  minPower = 0.0f,
-		  maxPower = 10.0f;
+	Scancode fireKey;
 
-	float currentPower = 5.0f;
+	float loadSpeed,
+		  minPower,
+		  maxPower;
+
+	float currentPower;
 
 	bool isLoading = false,
 		 isComponentEnabled = true;
 
 	inline float GetPowerPercentage() const { return (currentPower - minPower) / (maxPower - minPower); }
+
+	inline void StartLoad() { isLoading = true; }
+
+	void Fire();
 };
 

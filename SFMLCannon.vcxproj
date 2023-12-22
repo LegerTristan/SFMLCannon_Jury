@@ -178,6 +178,7 @@
     <ClCompile Include="Includes\UI\Private\HUD.cpp" />
     <ClCompile Include="Includes\UI\Private\LifeBar.cpp" />
     <ClCompile Include="Includes\UI\Private\RetryHUD.cpp" />
+    <ClCompile Include="Includes\UI\Private\ScoreText.cpp" />
     <ClCompile Include="SFMLCannon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +225,7 @@
     <ClInclude Include="Includes\UI\Public\HUD.h" />
     <ClInclude Include="Includes\UI\Public\LifeBar.h" />
     <ClInclude Include="Includes\UI\Public\RetryHUD.h" />
+    <ClInclude Include="Includes\UI\Public\ScoreText.h" />
     <ClInclude Include="Includes\Utils\Public\Constants.h" />
     <ClInclude Include="Includes\Utils\Public\json.hpp" />
     <ClInclude Include="Includes\Utils\Public\ObjectPool.h" />

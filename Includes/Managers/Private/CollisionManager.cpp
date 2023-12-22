@@ -23,7 +23,7 @@ void CollisionManager::RegisterCollisionComponent(CollisionComponent* _comp)
 void CollisionManager::Update(const float& _dt)
 {
 	if (physicsTimer)
-		physicsTimer->UpdateTimeline(_dt);
+		physicsTimer->UpdateTimer(_dt);
 }
 
 void CollisionManager::UnregisterCollisionComponent(CollisionComponent* _comp)

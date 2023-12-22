@@ -8,7 +8,7 @@ public:
 
 #pragma region Constructor/Destructor
 	KillZone(const sf::Vector2f _position) : Entity(_position, 0), 
-		onKillZoneTriggered(std::make_unique<Action<>>(nullptr))
+		onKillZoneTriggered(std::make_unique<Action<const EEntityType&>>(nullptr))
 	{
 		sf::Texture _text = sf::Texture();
 		_text.create(10, 10);
@@ -19,7 +19,7 @@ public:
 #pragma endregion
 
 	inline virtual EEntityType GetEntityType() const { return EEntityType::NONE; }
-	inline Action<>& OnKillZoneTriggered() { return *onKillZoneTriggered; }
+	inline Action<const EEntityType&>& OnKillZoneTriggered() { return *onKillZoneTriggered; }
 
 	void Init(const sf::Vector2f& _size);
 
@@ -27,5 +27,5 @@ protected:
 
 	virtual void OnCollide(const CollisionComponent& comp) override;
 
-	uptr<Action<>> onKillZoneTriggered;
+	uptr<Action<const EEntityType&>> onKillZoneTriggered;
 };

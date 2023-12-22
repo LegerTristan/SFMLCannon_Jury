@@ -27,15 +27,12 @@ class Cannon : public sf::Sprite
 
 public:
 
-	// CONSTRUCTOR & DESTRUCTOR
-
+#pragma region Constructor/Destructor
 	Cannon() = delete;
 	Cannon(wptr<EntityManager> manager, sf::Vector2f position);
 	~Cannon() = default;
-
-	// GETTERS & SETTER
-
-	inline wptr<sf::Sprite> GetMovingPartSprite() const { return movingPartSprite; }
+#pragma endregion
+	
 	inline bool IsCannonValid() const { return movingPartSprite != nullptr && cannonRotComp != nullptr && 
 		cannonShootComp != nullptr && cannonGauge != nullptr;}
 
@@ -47,6 +44,8 @@ public:
 	/// </summary>
 	/// <param name="window"></param>
 	void Draw(sf::RenderWindow& window);
+
+	void Disable();
 
 private:
 

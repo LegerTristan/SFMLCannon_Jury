@@ -1,5 +1,7 @@
 #pragma once
 #include "HUD.h"
+#include "ScoreText.h"
+#include "TimerCOmponent.h"
 
 class DefenceHUD : public HUD
 {
@@ -25,6 +27,11 @@ public:
 protected:
 
 	/// <summary>
+	/// Timeline Component that handles appearance of the wave
+	/// </summary>
+	uptr<TimerComponent<DefenceHUD>> timeTextTimer;
+
+	/// <summary>
 	/// Background for the game's UI elements.
 	/// </summary>
 	sf::Sprite cloundBackground;
@@ -33,5 +40,9 @@ protected:
 	/// Text for displaying the timer
 	/// </summary>
 	sf::Text timerText;
+
+	ScoreText scoreText;
+
+	int currentGameTime;
 };
 

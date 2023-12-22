@@ -20,18 +20,24 @@ public:
 		const float& rotSpeed);
 	InputRotationComponent(sptr<sf::Sprite> sprite, Scancode increaseRotKey, Scancode decreaseRotKey, const float& rotSpeed,
 		const float& minRot, const float& maxRot);
+	~InputRotationComponent() = default;
 #pragma endregion
 
 	void Update(const float& dt);
+
+	void Disable();
 
 private:
 
 #pragma region Properties
 	sptr<sf::Sprite> spriteToRotate;
 
-	float rotationSpeed = 1.0f,
-		minRotation = 0.0f,
-		maxRotation = 180.0f;
+	Scancode rotKeyUp,
+			 rotKeyDown;
+
+	float rotationSpeed,
+		  minRotation,
+		  maxRotation;
 
 	bool isRotationIncreased = false,
 		 isRotationDecreased = false,

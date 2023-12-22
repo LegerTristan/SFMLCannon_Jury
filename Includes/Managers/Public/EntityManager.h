@@ -27,6 +27,8 @@ public:
 	inline Action<const EEntityType&>& OnEntitySpawned() { return *onEntitySpawned; }
 	inline Action<const EEntityType&>& OnEntityDisabled() { return *onEntityDisabled; }
 
+	void Init();
+
 	sptr<Entity> SpawnEntity(EEntityType _entityType, const sf::Vector2f& _pos, const sf::Vector2f& _velocity);
 
 	/// <summary>
@@ -38,6 +40,7 @@ public:
 	void DisableEntity(sptr<Entity> _entity);
 
 	void DisableAllEntities();
+
 private:
 
 	std::map<EEntityType, std::pair<uptr<IEntityFactory>, uptr<ObjectPool>>> entityManagers;
@@ -45,12 +48,10 @@ private:
 	std::vector<sptr<Entity>> activeEntities;
 
 	uptr<Action<const EEntityType&>> onEntitySpawned,
-							  onEntityDisabled;
+									 onEntityDisabled;
 
 	sptr<Entity> RetrieveFromPool(EEntityType type, const sf::Vector2f& pos, const sf::Vector2f& velocity);
 
 	sptr<Entity> CreateNewEntityFromFactory(EEntityType type, const sf::Vector2f& pos, const sf::Vector2f& velocity);
-
-	bool IsSameEntity(const sptr<Entity>& entityA);
 };
 

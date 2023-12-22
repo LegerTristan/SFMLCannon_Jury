@@ -17,7 +17,7 @@ public:
 
 #pragma region Constructor/Destructor
 	HUD();
-	virtual ~HUD();
+	virtual ~HUD() = default;
 #pragma endregion
 
 	/// <summary>
@@ -43,7 +43,7 @@ protected:
 	/// <summary>
 	/// Font of the game
 	/// </summary>
-	static sf::Font* font;
+	sf::Font font;
 #pragma endregion;
 };
 

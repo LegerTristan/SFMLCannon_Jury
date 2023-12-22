@@ -17,6 +17,7 @@ public:
 	~CannonBall() = default;
 #pragma endregion
 
+#pragma region PublicMethods
 	inline virtual EEntityType GetEntityType() const override { return EEntityType::CANNON_BALL; }
 
 	virtual void Enable() override;
@@ -24,5 +25,6 @@ public:
 	virtual void OnCollide(const CollisionComponent& _comp) override;
 
 	virtual void Disable() override;
+#pragma endregion
 };
 

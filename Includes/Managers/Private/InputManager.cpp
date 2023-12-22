@@ -10,8 +10,9 @@ void InputManager::ListenEvents(sf::RenderWindow& _window)
         if (_it == delegates.end())
             return;
 
-        std::vector<uptr<IEventDelegate>>& _delegates = delegates[_event.type];
-        for (uptr<IEventDelegate>& _delegate : _delegates)
-            _delegate->ExecuteEvent(_event);
+        std::vector<uptr<EventDelegate>>& _delegates = delegates[_event.type];
+        for (uptr<EventDelegate>& _delegate : _delegates)
+            if(_delegate)
+                _delegate->ExecuteEvent(_event);
     }
 }

@@ -74,7 +74,7 @@ void CollisionComponent::UpdateHitBoxPosition()
 {
     const sptr<Entity> _entity = owner.lock();
     const sf::Vector2f _ownerPos = _entity->getPosition();
-    const sf::IntRect _ownerTextureRect = _entity->getTextureRect();
+    sf::IntRect _ownerTextureRect = _entity->getTextureRect();
     const sf::FloatRect _newHitBoxPos = sf::FloatRect(_ownerPos.x, _ownerPos.y, _ownerTextureRect.width,
         _ownerTextureRect.height);
 

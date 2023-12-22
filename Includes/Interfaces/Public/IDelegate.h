@@ -17,12 +17,27 @@ class IDelegate
 public:
     virtual ~IDelegate() = default;
     virtual Res Invoke(Params... _params) const = 0;
+
+    bool operator==(IDelegate<Res, Params...>& _other)
+    {
+        return Compare(_other);
+    }
+
+    bool operator!=(IDelegate<Res, Params...>& _other)
+    {
+        return !(this == _other);
+    }
+
+protected:
+
+    virtual bool Compare(const IDelegate<Res, Params...>& _other) = 0;
+
 };
 
 /// <summary>
 /// Inherits from IDelegate interface.
 /// Takes an instance of the templated class and method's pointer in constructor.
-///  Then, call this member method through Invoke method.
+/// Then, call this member method through Invoke method.
 /// </summary>
 /// <typeparam name="Res">Return type of member method.</typeparam>
 /// <typeparam name="Class">Member method's class</typeparam>
@@ -78,16 +93,52 @@ public:
         owner = nullptr;
     }
 
-    bool operator==(MemberDelegate<Res, Class>& _other)
+    bool operator==(const MemberDelegate<Res, Class>& _other)
     {
         return _other.owner == owner && _other.function == function;
     }
 
-    bool operator!=(MemberDelegate<Res, Class>& _other)
+    bool operator!=(const MemberDelegate<Res, Class>& _other)
     {
-        return !(this != _other);
+        return !(this == _other);
     }
 #pragma endregion
+
+protected:
+
+    virtual bool Compare(const IDelegate<Res, Params...>& _other)
+    {
+        const MemberDelegate<Res, Class, Params...>* _delegate = static_cast<const MemberDelegate<Res, Class, Params...>*>(&_other);
+        if (!_delegate)
+            return false;
+
+        return _delegate->owner == owner && _delegate->function == function;
+    }
+};
+
+template<typename Res, typename... Params>
+struct DelegateInvoker
+{
+    static Res Invoke(const std::vector<uptr<IDelegate<Res, Params...>>>& _delegates, Params... _params)
+    {
+        Res _result = Res();
+        const size_t _size = _delegates.size();
+        for (size_t i = 0; i < _size; ++i)
+            _result = _delegates[i]->Invoke(_params...);
+
+        return _result;
+    }
+};
+
+template<typename... Params>
+struct DelegateInvoker<void, Params...>
+{
+    static void Invoke(const std::vector<uptr<IDelegate<void, Params...>>>& _delegates, Params... _params)
+    {
+        const size_t _size = _delegates.size();
+        for (size_t i = 0; i < _size; ++i)
+            _delegates[i]->Invoke(_params...);
+    }
 };
 
 /// <summary>
@@ -124,26 +175,33 @@ public:
         delegates.push_back(std::move(_delegate));
     }
 
+    template<typename Class>
+    void RemoveDynamic(Class* _instance, Res(Class::* _ptr)(Params... _params))
+    {       
+        uptr<MemberDelegate<Res, Class, Params...>> _temp = 
+            std::make_unique<MemberDelegate<Res, Class, Params...>>(_instance, _ptr);
+
+        // Use erase-remove idiom.
+        delegates.erase(std::remove_if(delegates.begin(), delegates.end(), 
+            [&_temp](uptr<IDelegate<Res, Params...>>& _delegate)
+            {  
+                return *_delegate == *_temp;
+            }
+        ), delegates.end());
+    }
+
     Res Invoke(Params... _params) const override
     {
-        const size_t _size = delegates.size();
-        if constexpr (std::is_same_v<Res, void>)
-        {
-            for (size_t i = 0; i < _size; ++i)
-                delegates[i]->Invoke(_params...);
-
-            return Res();
-        }
-        else
-        {
-            Res _result = Res();
-            for (size_t i = 0; i < _size; ++i)
-                _result = delegates[i]->Invoke(_params...);
-
-            return _result;
-        }
+        return DelegateInvoker<Res, Params...>::Invoke(delegates, _params...);
     }
 #pragma endregion
+
+protected:
+
+    virtual bool Compare(const IDelegate<Res, Params...>& _other)
+    {
+        return true;
+    }
 };
 
 template<typename... Params>

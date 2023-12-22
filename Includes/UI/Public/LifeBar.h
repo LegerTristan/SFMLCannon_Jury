@@ -38,8 +38,8 @@ private:
 	/// </summary>
 	sf::Vector2f position;
 
-	int qtyToDraw = 0;
+	unsigned int qtyToDraw = 0;
 
-	inline void DecreaseQtyToDraw(const int& _qtyToDraw) { qtyToDraw = _qtyToDraw;  }
+	inline void UpdateQtyToDraw(const unsigned int& _qtyToDraw) { qtyToDraw = _qtyToDraw;  }
 };
 

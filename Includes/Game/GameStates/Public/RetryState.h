@@ -2,6 +2,8 @@
 
 #include "GameState.h"
 
+using Scancode = sf::Keyboard::Scan::Scancode;
+
 class RetryState : public GameState
 {
 public:
@@ -19,5 +21,13 @@ public:
 	/// Draw the final score of the player and wait for player to press F for restarting the game.
 	/// </summary>
 	void Update(sf::RenderWindow& window, const float& dt) override final;
+
+protected:
+
+	virtual void EndState() override final;
+
+private:
+
+	const Scancode RETRY_KEY = Scancode::F;
 };
 

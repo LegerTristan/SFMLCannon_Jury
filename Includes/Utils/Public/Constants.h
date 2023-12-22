@@ -1,8 +1,8 @@
 #pragma once
 
 #pragma region Window
-const int WINDOW_WIDTH = 1280,
-		  WINDOW_HEIGHT = 720;
+const unsigned int WINDOW_WIDTH = 1280,
+				   WINDOW_HEIGHT = 720;
 #pragma endregion
 
 #pragma region Time
@@ -126,7 +126,6 @@ const sf::Vector2f GROUND_ENEMY_SCALE = sf::Vector2f(0.25f, 0.25f);					// Scale
 const float GROUND_ENEMY_XP = 4.0f;													// XP given by ground enemies
 const float GROUND_ENEMY_ANIM_DELAY = .1f;											// Animation's delay between each frame
 																					// of floating enemy
-const unsigned int GROUND_ENEMY_SCORE = 5;											// Score given by grounds enemies
 #pragma endregion
 
 #pragma region FloatEnemy
@@ -143,8 +142,6 @@ const float DEFAULT_FLOAT_ENEMY_FREQUENCY = 0.3f;										// Float movement fre
 const float FLOAT_ENEMY_XP = 7.0f;														// XP of floating enemy
 const float FLOAT_ENEMY_ANIM_DELAY = .1f;												// Animation's delay between each frame
 																						// of floating enemy
-
-const unsigned int FLOAT_ENEMY_SCORE = 8;												// Score of floating enemy
 #pragma endregion
 
 #pragma region KillZones
@@ -157,4 +154,9 @@ const sf::Vector2f ENEMIES_KILL_ZONE_EXTENT = sf::Vector2f(1.0f, 0.0f);		// Exte
 
 #pragma region CollisionManager
 const float PHYSIC_CHECK_RATE = 0.1f;										// Check rate of all collision components in the game.
+#pragma endregion
+
+#pragma region ScoreManager
+const unsigned int GROUND_ENEMY_SCORE = 5;												// Score given by grounds enemies
+const unsigned int FLOAT_ENEMY_SCORE = 8;												// Score of floating enemy
 #pragma endregion

@@ -27,6 +27,10 @@ void LevelState::Init()
 
 	player->BindToEnemiesKillZone(*enemiesKillZone);
 	player->OnPlayerLose().AddDynamic(this, &LevelState::PreparteEndState);
+
+	_game->GetScoreManager().RegisterKillZone(*enemiesKillZone);
+	_game->GetScoreManager().RegisterEntityManager(*entityManager);
+	GameState::Init();
 }
 
 void LevelState::Update(sf::RenderWindow& _window, const float& _dt)
@@ -46,20 +50,15 @@ void LevelState::Update(sf::RenderWindow& _window, const float& _dt)
 	cannonBallsKillZone->Draw(_window);
 	enemiesKillZone->Draw(_window);
 
-	if (endStateWhenEndLoop)
+	if (endStateAtNextFrame)
 		EndState();
 }
 
 void LevelState::EndState()
 {
-	Game* _game = Game::GetInstance();
-
-	if (!_game)
-		return;
-
 	cannonBallsKillZone->Disable();
 	enemiesKillZone->Disable();
 	entityManager->DisableAllEntities();
-	_game->GetCollisionManager().ClearCollisions();
-	_game->RemoveState();
+	cannon->Disable();
+	GameState::EndState();
 }

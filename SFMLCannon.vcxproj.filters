@@ -177,6 +177,9 @@
     <ClCompile Include="Includes\Managers\Private\ScoreManager.cpp">
       <Filter>Fichiers sources\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Includes\UI\Private\ScoreText.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\Utils\Public\Singleton.h">
@@ -322,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="Includes\Managers\Public\ScoreManager.h">
       <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\ScoreText.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

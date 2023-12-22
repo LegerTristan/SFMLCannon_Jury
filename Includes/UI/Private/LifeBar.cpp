@@ -10,7 +10,7 @@ LifeBar::LifeBar(sf::Vector2f _position, const int& _lifeQty) :
 	// Set heart's texture and sprites of life bar.
 	sf::Texture& _texture = Game::GetInstance()->GetTextureManager().GetTexture(HEART_TEXTURE_PATH);
 
-	for (int i = 0; i < qtyToDraw; ++i)
+	for (unsigned int i = 0; i < qtyToDraw; ++i)
 	{
 		sf::Sprite _heart = sf::Sprite();
 		_heart.setTexture(_texture);
@@ -23,11 +23,11 @@ LifeBar::LifeBar(sf::Vector2f _position, const int& _lifeQty) :
 
 void LifeBar::BindToPlayerLife(Player& _player)
 {
-	_player.OnPlayerLifeDecreased().AddDynamic(this, &LifeBar::DecreaseQtyToDraw);
+	_player.OnPlayerLifeDecreased().AddDynamic(this, &LifeBar::UpdateQtyToDraw);
 }
 
 void LifeBar::Draw(sf::RenderWindow& _window)
 {
-	for (int i = 0; i < hearts.size() && i < qtyToDraw; ++i)
+	for (size_t i = 0; i < hearts.size() && i < qtyToDraw; ++i)
 		_window.draw(hearts[i]);
 }

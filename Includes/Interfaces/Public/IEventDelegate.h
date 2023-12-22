@@ -6,54 +6,69 @@
 using Scancode = sf::Keyboard::Scan::Scancode;
 
 /// <summary>
-/// Specific interface of IDelegate that takes an event as parameter of his ExecuteEvent method.
+/// Contains an IDelegate which is invoked when a specific window event is triggered.
 /// </summary>
-class IEventDelegate : public IDelegate<void>
+class EventDelegate
 {
 public:
-
-    virtual ~IEventDelegate() = default;
+    EventDelegate(uptr<IDelegate<void>> _delegate) : eventDelegate(std::move(_delegate)) {}
+    virtual ~EventDelegate() = default;
 
     inline virtual void ExecuteEvent(sf::Event _event) = 0;
 
-    inline virtual void Invoke() const = 0;
+    bool operator==(const EventDelegate& _other)
+    {
+        return Compare(_other);
+    }
+
+    bool operator!=(const EventDelegate& _other)
+    {
+        return !Compare(_other);
+    }
+
+protected:
+
+    uptr<IDelegate<void>> eventDelegate;
+
+    inline virtual bool Compare(const EventDelegate& _other) = 0;
 };
 
 /// <summary>
-/// Inherits from IEventDelegate
+/// Inherits from EventDelegate
 /// Simple event delegate that takes no parameters and return value.
 /// It executes a member's method from TClass.
 /// </summary>
 /// <typeparam name="TClass">Class of the member method</typeparam>
 template<class TClass>
-class SimpleEventDelegate : public IEventDelegate
+class SimpleEventDelegate : public EventDelegate
 {
-    typedef void (TClass::* Callback)();
-
-    TClass* reference = nullptr;
-
-    Callback callback = nullptr;
-
 public:
 
+    inline SimpleEventDelegate(TClass* _ref, void(TClass::* _function)()) :
+        EventDelegate(std::make_unique<MemberDelegate<void, TClass>>(_ref, _function))
+    {
+    }
+
+    ~SimpleEventDelegate() = default;
+
 #pragma region Methods
-    inline SimpleEventDelegate(TClass* _ref, Callback _function)
+    inline virtual void ExecuteEvent(sf::Event _event) override
     {
-        reference = _ref;
-        callback = _function;
-    }
-
-    inline virtual void ExecuteEvent(sf::Event _event)
-    {
-        Invoke();
-    }
-
-    inline virtual void Invoke() const override
-    {
-        if (!reference || !callback)
+        if (!eventDelegate)
             return;
 
-        (reference->*callback)();
+        eventDelegate->Invoke();
+    }
+
+protected:
+
+    inline virtual bool Compare(const EventDelegate& _other) override
+    {
+        const SimpleEventDelegate<TClass>* _eventDelegate = static_cast<const SimpleEventDelegate<TClass>*>(&_other);
+        if (!_eventDelegate)
+            return false;
+
+        return *_eventDelegate->eventDelegate == *eventDelegate;
     }
 #pragma endregion
 };
@@ -65,36 +80,35 @@ public:
 /// </summary>
 /// <typeparam name="TClass">Class of the member method</typeparam>
 template<class TClass>
-class KeyDelegate : public IEventDelegate
+class KeyDelegate : public SimpleEventDelegate<TClass>
 {
-    typedef void (TClass::* Callback)();
+public:
 
-    TClass* reference = nullptr;
+    inline KeyDelegate(TClass* _ref, void (TClass::* _function)(), Scancode _key) :
+        SimpleEventDelegate<TClass>(_ref, _function),
+        key(_key)
+    {
 
-    Callback callback = nullptr;
+    }
+
+    ~KeyDelegate() = default;
+
+    inline virtual void ExecuteEvent(sf::Event _event) override final
+    {
+        if (_event.key.scancode == key)
+            SimpleEventDelegate<TClass>::ExecuteEvent(_event);
+    }
+
+protected:
 
     Scancode key;
 
-public:
-
-    inline KeyDelegate(TClass* _ref, Callback _function, Scancode _key)
+    inline virtual bool Compare(const EventDelegate& _other) override
     {
-        reference = _ref;
-        callback = _function;
-        key = _key;
-    }
+        const KeyDelegate<TClass>* _eventDelegate = static_cast<const KeyDelegate<TClass>*>(&_other);
+        if (!_eventDelegate)
+            return false;
 
-    inline virtual void ExecuteEvent(sf::Event _event) override
-    {
-        if (_event.key.scancode == key)
-            Invoke();
-    }
-
-    inline virtual void Invoke() const override
-    {
-        if (!reference || !callback)
-            return;
-
-        (reference->*callback)();
+        return SimpleEventDelegate<TClass>::Compare(_other) && _eventDelegate->key == key;
     }
 };

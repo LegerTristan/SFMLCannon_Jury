@@ -1,13 +1,13 @@
 #pragma once
 
-#include <stack>
+#include <queue>
 #include "TimeManager.h"
 #include "TextureManager.h"
 #include "InputManager.h"
 #include "GameState.h"
 #include "Singleton.h"
 #include "CollisionManager.h"
-//class UpgradeManager;
+#include "ScoreManager.h"
 
 using namespace sf;
 
@@ -23,7 +23,7 @@ public:
 
 #pragma region Constructor/Destructor
 	Game();
-	virtual ~Game() = default;
+	virtual ~Game();
 #pragma endregion
 
 #pragma region Getters
@@ -31,11 +31,12 @@ public:
 	inline TextureManager& GetTextureManager() const { return *textureManager; }
 	inline InputManager& GetInputManager() const { return *inputManager; }
 	inline CollisionManager& GetCollisionManager() const { return *collisionManager; }
+	inline ScoreManager& GetScoreManager() const { return *scoreManager; }
 #pragma endregion
 
 #pragma region PublicMethods
 	inline bool IsGameValid() const { return timeManager != nullptr && textureManager != nullptr 
-		&& inputManager != nullptr; }
+		&& inputManager != nullptr && collisionManager != nullptr && scoreManager != nullptr; }
 
 	/// <summary>
 	/// Add a new state to the stack of states in the game and init state's features.
@@ -57,16 +58,18 @@ public:
 	/// Main loop of the program.
 	/// While the window is open, the game continues.
 	/// </summary>
-	void LaunchGame();
+	void StartGame();
+
+	void RestartGame();
 #pragma endregion
 
 private:
 
 #pragma region Properties
 	/// <summary>
-	/// Stack of GameStates
+	/// Queue of GameStates
 	/// </summary>
-	std::stack<uptr<GameState>> states;
+	std::queue<uptr<GameState>> states;
 
 	/// <summary>
 	/// Window of the game
@@ -86,6 +89,8 @@ private:
 	uptr<InputManager> inputManager;
 
 	uptr<CollisionManager> collisionManager;
+
+	uptr<ScoreManager> scoreManager;
 #pragma endregion
 	
 #pragma region PrivateMethods

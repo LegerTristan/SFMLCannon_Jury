@@ -2,7 +2,12 @@
 #include "Utilities.h"
 #include "Game.h"
 
-DefenceHUD::DefenceHUD() : HUD()
+DefenceHUD::DefenceHUD() :
+	HUD(),
+	timeTextTimer(std::make_unique<TimerComponent<DefenceHUD>>(this, &DefenceHUD::UpdateTimerText, 1.0f, true)),
+	scoreText(ScoreText(font, sf::Color::Black,
+		sf::Vector2f((WINDOW_WIDTH + 250) / 2, HUD_Y_OFFSET), false)),
+	currentGameTime(0)
 {
 	TextureManager& _textureManager = Game::GetInstance()->GetTextureManager();
 
@@ -18,20 +23,24 @@ DefenceHUD::DefenceHUD() : HUD()
 	timerText.setCharacterSize(HUD_CHARACTER_SIZE);
 	timerText.setOrigin(Utilities::GetCenter(timerText));
 	timerText.setPosition(sf::Vector2f((WINDOW_WIDTH / 2) - (timerText.getCharacterSize() / 2), HUD_Y_OFFSET));
-	timerText.setFont(*font);
+	timerText.setFont(font);
+
+	UpdateTimerText();
+	if (timeTextTimer)
+		timeTextTimer->Start();
 }
 
 void DefenceHUD::Update(const float& _dt)
 {
-	UpdateTimerText();
+	if(timeTextTimer)
+		timeTextTimer->UpdateTimer(_dt);
 }
-
 
 void DefenceHUD::UpdateTimerText()
 {
-	const float _currentTime = Game::GetInstance()->GetTimeManager().GetCurrentTime();
-	int _minutes = Utilities::ToMinutes(_currentTime),
-		_seconds = Utilities::ToSeconds(_currentTime);
+	currentGameTime++;
+	int _minutes = Utilities::ToMinutes(currentGameTime),
+		_seconds = Utilities::ToSeconds(currentGameTime);
 
 	char* _format = (char*)malloc(sizeof(char) * 6);
 	snprintf(_format, 6, "%02d:%02d", _minutes, _seconds);
@@ -45,4 +54,5 @@ void DefenceHUD::Draw(sf::RenderWindow& _window) const
 	HUD::Draw(_window);
 	_window.draw(cloundBackground);
 	_window.draw(timerText);
+	scoreText.Draw(_window);
 }

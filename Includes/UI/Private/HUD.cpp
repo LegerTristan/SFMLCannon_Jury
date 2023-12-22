@@ -4,26 +4,15 @@
 #include "Constants.h"
 #include "Game.h"
 
-sf::Font* HUD::font = nullptr;
-
-HUD::HUD()
+HUD::HUD() : 
+	font(sf::Font())
 {
 	TextureManager& _textureManager = Game::GetInstance()->GetTextureManager();
 
 	levelBackground.setTexture(_textureManager.GetTexture(BACKGROUND_FONT_PATH));
 
 	// Set game's font
-	font = new sf::Font();
-	font->loadFromFile(GAME_FONT_PATH);
-}
-
-HUD::~HUD()
-{
-	if (!font)
-		return;
-
-	delete font;
-	font = nullptr;
+	font.loadFromFile(GAME_FONT_PATH);
 }
 
 void HUD::Update(const float& _dt)

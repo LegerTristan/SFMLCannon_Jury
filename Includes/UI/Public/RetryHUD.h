@@ -1,6 +1,7 @@
 #pragma once
 
 #include "HUD.h"
+#include "ScoreText.h"
 
 class RetryHUD : public HUD
 {
@@ -17,6 +18,8 @@ private:
 
 	sf::Text retryText;
 
-	sf::Text scoreText;
+	ScoreText scoreText;
+
+	void UpdateScoreText(const unsigned int& _score);
 };
 

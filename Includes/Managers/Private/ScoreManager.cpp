@@ -1,38 +1,57 @@
-#include <string>
-
 #include "ScoreManager.h"
 #include "HUD.h"
 #include "Constants.h"
+#include "EntityManager.h"
+#include "KillZone.h"
 
-using namespace std;
+ScoreManager::ScoreManager() :
+	scorePerEntityType(
+		{
+			{EEntityType::GOLEM, GROUND_ENEMY_SCORE},
+			{EEntityType::WRAITH, FLOAT_ENEMY_SCORE}
+		}
+	),
+	onScoreUpdated(std::make_unique<Action<const int&>>(nullptr)),
+	highScore(0),
+	score(0)
+{}
 
-ScoreManager::ScoreManager()
+void ScoreManager::RegisterEntityManager(EntityManager& _entityManager)
 {
-	mHighScore = mScore = 0;
-
-	mScoreText.setCharacterSize(24);
-	mScoreText.setFillColor(Color::Black);
-	mScoreText.setOrigin(32, mScoreText.getCharacterSize() / 2);
-	mScoreText.setPosition(WINDOW_WIDTH / 2 + SCORE_TEXT_POS.x, SCORE_TEXT_POS.y);
-	mScoreText.setFont(*HUD::GetGameFont());
-	mScoreText.setString(to_string(mScore) + "pts");
+	_entityManager.OnEntityDisabled().AddDynamic(this, &ScoreManager::AddScore);
 }
 
-void ScoreManager::AddScore(const unsigned int& _toAdd)
+void ScoreManager::UnregisterEntityManager(EntityManager& _entityManager)
 {
-	mScore += _toAdd;
-	mScoreText.setString(to_string(mScore) + "pts");
+	_entityManager.OnEntityDisabled().RemoveDynamic(this, &ScoreManager::AddScore);
 }
 
-void ScoreManager::DisplayFinalScore()
+void ScoreManager::RegisterKillZone(KillZone& _killZone)
 {
-	mScoreText.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	mScoreText.setCharacterSize(TEXT_CHARACTER_SIZE);
-	mScoreText.setString("Score : " + to_string(mScore) + "pts\n Press F to restart");
-	mScoreText.setOrigin(100, mScoreText.getCharacterSize() / 2);
+	_killZone.OnKillZoneTriggered().AddDynamic(this, &ScoreManager::DecreaseScore);
 }
 
-void ScoreManager::DrawScore(RenderWindow* _window) const
+void ScoreManager::UnregisterKillZone(KillZone& _killZone)
 {
-	_window->draw(mScoreText);
+	_killZone.OnKillZoneTriggered().RemoveDynamic(this, &ScoreManager::DecreaseScore);
+}
+
+void ScoreManager::UpdateScoreBehavior(const EEntityType& _type, float _scalar)
+{
+	auto _itResult = scorePerEntityType.find(_type);
+	if (_itResult == scorePerEntityType.end())
+		return;
+
+	score += scorePerEntityType[_type] * _scalar;
+	onScoreUpdated->Invoke(score);
+}
+
+void ScoreManager::AddScore(const EEntityType& _type)
+{
+	UpdateScoreBehavior(_type);
+}
+
+void ScoreManager::DecreaseScore(const EEntityType& _type)
+{
+	UpdateScoreBehavior(_type, -1);
 }

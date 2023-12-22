@@ -63,12 +63,12 @@ private:
 	/// <summary>
 	/// Increment current enemies number present in the level.
 	/// </summary>
-	inline void IncreaseEnemyNbrBehavior(const EEntityType& _type);
+	inline void IncreaseEnemyNbrBehavior(const EEntityType& type);
 
 	/// <summary>
 	/// Decrement current enemies number present in the level.
 	/// </summary>
-	inline void DecreaseEnemyNbrBehavior(const EEntityType& _type);
+	inline void DecreaseEnemyNbrBehavior(const EEntityType& type);
 
 	/// <summary>
 	/// Spawn a new random enemy

@@ -1,6 +1,11 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include <unordered_map>
+#include "EntityType.h"
+#include "IDelegate.h"
+
+class EntityManager;
+class KillZone;
 
 /// <summary>
 /// Handle score of the level.
@@ -9,44 +14,43 @@ class ScoreManager
 {
 public:
 
-	// CONSTRUCTOR & DESTRUCTOR
-
+#pragma region Constructor/Destructor
 	ScoreManager();
 	~ScoreManager() = default;
+#pragma endregion
 
-	/// <summary>
-	/// Add score to the current score made and display the new score value.
-	/// </summary>
-	/// <param name="toAdd">To add to the score</param>
-	void AddScore(const unsigned int& toAdd);
+#pragma region Getters
+	inline Action<const int&>& OnScoreUpdated() { return *onScoreUpdated; }
+#pragma endregion
 
-	/// <summary>
-	/// Center position and zoom text by increasing character size.
-	/// Finally, set Text's string in order to display the final score.
-	/// </summary>
-	void DisplayFinalScore();
+	void RegisterEntityManager(EntityManager& entityManager);
 
-	/// <summary>
-	/// Draw score's text on the window
-	/// </summary>
-	/// <param name="window">Game window</param>
-	void DrawScore(RenderWindow* window) const;
+	void UnregisterEntityManager(EntityManager& entityManager);
+
+	void RegisterKillZone(KillZone& killZone);
+
+	void UnregisterKillZone(KillZone& killZone);
 
 private:
 
-	/// <summary>
-	/// Text to display score.
-	/// </summary>
-	Text mScoreText;
+	uptr<Action<const int&>> onScoreUpdated;
+
+	std::unordered_map<EEntityType, int> scorePerEntityType;
 
 	/// <summary>
 	/// Previous high score registered in the game.
 	/// </summary>
-	unsigned int mHighScore;
+	int highScore;
 
 	/// <summary>
 	/// Score made in the current level.
 	/// </summary>
-	unsigned int mScore;
+	int score;
+
+	void AddScore(const EEntityType& type);
+
+	void DecreaseScore(const EEntityType& type);
+
+	void UpdateScoreBehavior(const EEntityType& type, float scalar = 1);
 };
 

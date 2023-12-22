@@ -1,27 +1,34 @@
 #include "Game.h"
 #include "Constants.h"
+#include "LevelState.h"
+#include "RetryState.h"
 
 Game::Game() : 
     window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Cannon"),
     timeManager(std::make_unique<TimeManager>()),
     textureManager(std::make_unique<TextureManager>()),
     inputManager(std::make_unique<InputManager>()),
-    collisionManager(std::make_unique<CollisionManager>())
+    collisionManager(std::make_unique<CollisionManager>()),
+    scoreManager(std::make_unique<ScoreManager>())
 {
 }
 
-void Game::AddState(std::unique_ptr<GameState> _newState)
+Game::~Game()
 {
-    _newState->Init();
-    states.push(std::move(_newState));
+    timeManager = nullptr;
+    textureManager = nullptr;
+    inputManager = nullptr;
+    collisionManager = nullptr;
+    scoreManager = nullptr;
 }
 
-void Game::LaunchGame()
+void Game::StartGame()
 {
     if (!IsGameValid())
         return;
 
-    inputManager->BindEvent(sf::Event::Closed, this, &Game::CloseGame);
+    RestartGame();
+    inputManager->AddEvent(sf::Event::Closed, this, &Game::CloseGame);
     LoopGame();
 }
 
@@ -44,18 +51,38 @@ void Game::LoopGame()
     }
 }
 
+void Game::AddState(uptr<GameState> _newState)
+{
+    _newState->OnStateEnded().AddDynamic(this, &Game::RemoveState);
+    states.push(std::move(_newState));
+}
+
 void Game::UpdateState(const float& _dt)
 {
     if (!states.empty())
-        states.top()->Update(window, _dt);
+    {
+        uptr<GameState>& _front = states.front();
+        if (!_front->IsInit())
+            _front->Init();
+
+        _front->Update(window, _dt);
+    }
 }
 
 void Game::RemoveState()
 {
+    states.front()->OnStateEnded().RemoveDynamic(this, &Game::RemoveState);
+    collisionManager->ClearCollisions();
     states.pop();
 }
 
 void Game::CloseGame()
 {
     window.close();
+}
+
+void Game::RestartGame()
+{
+    AddState(std::make_unique<LevelState>());
+    AddState(std::make_unique<RetryState>());
 }

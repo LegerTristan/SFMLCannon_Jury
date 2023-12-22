@@ -3,6 +3,7 @@
 #include "LifeBar.h"
 #include "Gauge.h"
 #include "IDelegate.h"
+#include "EntityType.h"
 
 class KillZone;
 
@@ -21,7 +22,7 @@ public:
 	~Player() = default;
 #pragma endregion
 
-	inline Action<const int&>& OnPlayerLifeDecreased() { return *onPlayerLifeDecreased; }
+	inline Action<const unsigned int&>& OnPlayerLifeDecreased() { return *onPlayerLifeDecreased; }
 	inline Action<>& OnPlayerLose() { return *onPlayerLose; }
 	inline LifeBar& GetLifeBar() const { return *lifeBar; }
 
@@ -35,7 +36,7 @@ public:
 
 private:
 
-	uptr<Action<const int&>> onPlayerLifeDecreased;
+	uptr<Action<const unsigned int&>> onPlayerLifeDecreased;
 
 	uptr<Action<>> onPlayerLose;
 
@@ -47,8 +48,8 @@ private:
 	/// <summary>
 	/// Current player's life
 	/// </summary>
-	int life;
+	unsigned int life;
 
-	void DecrementHP();
+	void DecrementHP(const EEntityType& type);
 };
 

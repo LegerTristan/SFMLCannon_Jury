@@ -8,5 +8,8 @@ void KillZone::Init(const sf::Vector2f& _size)
 
 void KillZone::OnCollide(const CollisionComponent& _comp)
 {
-	onKillZoneTriggered->Invoke();
+	sptr<Entity> _owner = _comp.GetOwner().lock();
+
+	if(_owner)
+		onKillZoneTriggered->Invoke(_owner->GetEntityType());
 }

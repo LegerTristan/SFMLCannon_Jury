@@ -48,6 +48,12 @@ void Cannon::Draw(RenderWindow& _window)
 	cannonGauge->Draw(_window);
 }
 
+void Cannon::Disable()
+{
+	cannonShootComp->Disable();
+	cannonRotComp->Disable();
+}
+
 void Cannon::InitSprite(Sprite& _sprite, const std::string& _path, const sf::Vector2f& _pos)
 {
 	const Texture& _temp = Game::GetInstance()->GetTextureManager().GetTexture(_path);
