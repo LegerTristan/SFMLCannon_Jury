@@ -14,7 +14,7 @@ public:
 #pragma region Constructors / Destructor
 	FloatEnemy() = delete;
 	FloatEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture,
-		const float& xp, const unsigned int& givenScore);
+		const float& xp);
 	~FloatEnemy() = default;
 #pragma endregion
 

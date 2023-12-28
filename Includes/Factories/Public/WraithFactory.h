@@ -16,7 +16,7 @@ public:
 
 		sptr<FloatEnemy> _floatEnemy = std::make_shared<FloatEnemy>(_pos,
 			Game::GetInstance()->GetTextureManager().GetTexture(FLOAT_ENEMY_TEXTURE_PATH),
-			FLOAT_ENEMY_XP, FLOAT_ENEMY_SCORE);
+			FLOAT_ENEMY_XP);
 
 		_floatEnemy->AddComponent<FloatMoveComponent>(_velocity, DEFAULT_FLOAT_ENEMY_AMPLITUDE, DEFAULT_FLOAT_ENEMY_FREQUENCY);
 		_floatEnemy->AddComponent<AnimationComponent>(FLOAT_ENEMY_ANIM_DELAY, _jsonPath);

@@ -28,7 +28,7 @@ public:
 	/// The next formula is used to calculate owner's position :	X = V0.X * t + P0.X
 	///																Y = sinf(t) * mFloatVariation + P0.Y
 	/// </summary>
-	virtual bool Move(const float& dt) override final;
+	virtual void Move(const float& dt) override final;
 
 private:
 

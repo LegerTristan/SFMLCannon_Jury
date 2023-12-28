@@ -33,13 +33,7 @@ protected:
 	/// <summary>
 	/// Virtual pure method to move the owner along a predifined type of Movement
 	/// </summary>
-	virtual bool Move(const float& dt) = 0;
-
-	/// <summary>
-	/// Check if owner of this component is outside the screen.
-	/// </summary>
-	/// <returns>True if his position is below the minimal boundaries or above the maximal boundaries.</returns>
-	bool IsOwnerOutsideScreen() const;
+	virtual void Move(const float& dt) = 0;
 #pragma endregion
 };
 

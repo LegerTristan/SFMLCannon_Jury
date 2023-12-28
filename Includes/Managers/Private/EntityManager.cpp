@@ -19,15 +19,17 @@ void EntityManager::Init()
 	Game::GetInstance()->GetScoreManager().RegisterEntityManager(*this);
 }
 
-sptr<Entity> EntityManager::SpawnEntity(EEntityType _entityType, const sf::Vector2f& _pos, const sf::Vector2f& _velocity)
+sptr<Entity> EntityManager::SpawnEntity(EEntityType _entityType, const sf::Vector2f& _pos, 
+	const sf::Vector2f& _velocity)
 {
 	sptr<Entity> _entity = nullptr;
 	auto _itResult = entityManagers.find(_entityType);
 	if (_itResult != entityManagers.end())
 	{
-		_entity = RetrieveFromPool(_entityType, _pos, _velocity);
-		_entity = _entity ? _entity : CreateNewEntityFromFactory(_entityType, _pos, _velocity);
-	}
+		_entity = RetrieveFromPool(_entityType, _pos, _velocity);		// Try to get an entity from the ObjectPooling.
+
+		_entity = _entity ? _entity : CreateNewEntityFromFactory(_entityType, _pos, _velocity);	// If entity is nullptr
+	}																							// then create a new one.
 
 	if (_entity)
 	{
@@ -85,8 +87,9 @@ void EntityManager::DisableEntity(sptr<Entity> _entity)
 		return;
 
 	const EEntityType& _entityType = _entity->GetEntityType();
-	auto _itResult = entityManagers.find(_entityType);
-	auto _itEntity = std::find(activeEntities.begin(), activeEntities.end(), _entity);
+	auto _itResult = entityManagers.find(_entityType);									
+	auto _itEntity = std::find(activeEntities.begin(), activeEntities.end(), _entity);	// Check if the entity exist 
+																						// among the active entities.
 	if (_itResult == entityManagers.end() || _itEntity == activeEntities.end())
 		return;
 

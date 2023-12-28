@@ -17,7 +17,7 @@ public:
 
 		sptr<GroundEnemy> _groundEnemy = std::make_shared<GroundEnemy>(_pos, 
 			Game::GetInstance()->GetTextureManager().GetTexture(GROUND_ENEMY_TEXTURE),
-			GROUND_ENEMY_XP, GROUND_ENEMY_SCORE);
+			GROUND_ENEMY_XP);
 
 		_groundEnemy->AddComponent<StraightMoveComponent>(_velocity);
 		_groundEnemy->AddComponent<AnimationComponent>(GROUND_ENEMY_ANIM_DELAY, _jsonPath);

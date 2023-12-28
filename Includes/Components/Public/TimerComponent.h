@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "IDelegate.h"
 
 /// <summary>
 /// A component that have is own timeline.
@@ -9,18 +10,13 @@
 /// The timeline flow is a float
 /// </summary>
 /// <typeparam name="T">Owner class that we need in order to call an event of this class through the component.</typeparam>
-template<class T>
+template<class TClass>
 class TimerComponent
 {
 public:
-	/// <summary>
-	/// Event delegate
-	/// </summary>
-	typedef void (T::* Function)();
 
-	TimerComponent(T* _owner, Function _ownerFunction, const float& _triggerRate, const bool& _repeatTrigger = false) :
-		owner(_owner),
-		ownerFunction(_ownerFunction),
+	TimerComponent(TClass* _owner, void(TClass::* _ownerFunction)(), const float& _triggerRate, const bool& _repeatTrigger = false) :
+		timerDelegate(std::make_unique<MemberDelegate<void, TClass>>(_owner, _ownerFunction)),
 		triggerRate(_triggerRate),
 		currentTriggerTime(0.0f),
 		repeat(_repeatTrigger),
@@ -51,28 +47,20 @@ public:
 
 		if (currentTriggerTime >= triggerRate)
 		{
-			HandleEvent();
+			CallEvent();
 			Reset();
 		}
 	}
 
 private:
 
-    /// <summary>
-    /// Check if it can cal the event and if it needs to repeat it or not.
-    /// </summary>
-	void HandleEvent()
-	{
-		if (owner && ownerFunction)
-			CallEvent();
-	}
-
 	/// <summary>
 	/// Call the event bind to the timeline component.
 	/// </summary>
 	void CallEvent() const
 	{
-		(owner->*ownerFunction)();
+		if(timerDelegate)
+			timerDelegate->Invoke();
 	}
 
 	/// <summary>
@@ -86,20 +74,10 @@ private:
 			return;
 
 		isActive = false;
-		owner = nullptr;
-		ownerFunction = nullptr;
+		timerDelegate = nullptr;
 	}
 
-	/// <summary>
-	/// Owner of the component.
-	/// Necessary for calling the event with the mOwnerFunction member
-	/// </summary>
-	T* owner;
-
-	/// <summary>
-	/// Function of the owner that will be called when the event trigger will be passed.
-	/// </summary>
-	Function ownerFunction;
+	uptr<MemberDelegate<void, TClass>> timerDelegate;
 
 	/// <summary>
 	/// Time when the event needs to be called

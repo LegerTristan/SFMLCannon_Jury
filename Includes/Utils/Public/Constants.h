@@ -17,7 +17,7 @@ const std::string GAME_FONT_PATH = "Assets/Font/SUPER_BOOM.ttf",
 			      CLOUD_IMAGE_PATH = "Assets/Textures/Cloud.png",
 				  BACKGROUND_FONT_PATH = "Assets/Textures/Cannon_Background.png";
 
-const float HUD_Y_OFFSET = 10.0f;				// Y offset for most part of UI elements of the HUD
+const float HUD_Y_OFFSET = 15.0f;				// Y offset for most part of UI elements of the HUD
 const unsigned int HUD_CHARACTER_SIZE = 30;		// Character size of HUD texts
 const unsigned int SCORE_CHARACTER_SIZE = 32;	// Character size of HUD texts
 #pragma endregion
@@ -120,7 +120,7 @@ const unsigned int DEFAULT_ENEMY_LIFE = 1;							// Base life of enemies
 const std::string GROUND_ENEMY_TEXTURE = "Assets/Textures/Golem_Walking_1.png";		// Path of the texture
 const std::string GROUND_ENEMY_ANIMATION_PATH = "Assets/JSON/Golem_Walking_1.json";	// Path of animation's informations
 
-const sf::Vector2f GROUND_ENEMY_VELOCITY = sf::Vector2f(-100.0f, 0.0f);				// Velocity of ground enemies
+const sf::Vector2f GROUND_ENEMY_VELOCITY = sf::Vector2f(-10.0f, 0.0f);				// Velocity of ground enemies
 const sf::Vector2f GROUND_ENEMY_SCALE = sf::Vector2f(0.25f, 0.25f);					// Scale of ground enemies
 
 const float GROUND_ENEMY_XP = 4.0f;													// XP given by ground enemies
@@ -132,7 +132,7 @@ const float GROUND_ENEMY_ANIM_DELAY = .1f;											// Animation's delay betwee
 const std::string FLOAT_ENEMY_TEXTURE_PATH = "Assets/Textures/Wraith_Walking_1.png";	// Path of the texture
 const std::string FLOAT_ENEMY_ANIMATION_PATH  = "Assets/JSON/Wraith_Walking_1.json";	// Path of animation's informations
 
-const sf::Vector2f FLOAT_ENEMY_VELOCITY = sf::Vector2f(-50.0f, 0.0f);					// Velocity of floating enemy
+const sf::Vector2f FLOAT_ENEMY_VELOCITY = sf::Vector2f(-5.0f, 0.0f);					// Velocity of floating enemy
 const sf::Vector2f FLOAT_ENEMY_SCALE = sf::Vector2f(0.3f, 0.3f);						// Scale of floating enemy
 
 const float DEFAULT_FLOAT_ENEMY_AMPLITUDE = 3.0f;										// Float movement amplitude for 

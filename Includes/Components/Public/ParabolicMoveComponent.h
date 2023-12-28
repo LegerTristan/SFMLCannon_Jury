@@ -23,7 +23,7 @@ protected:
 	///																					Y = (g / 2) * t² + V0.Y * t + P0.Y
 	/// Fact : That is g / 2 cause of the Y axis which is inverted.
 	/// </summary>
-	virtual bool Move(const float& dt) override final;
+	virtual void Move(const float& dt) override final;
 
 };
 

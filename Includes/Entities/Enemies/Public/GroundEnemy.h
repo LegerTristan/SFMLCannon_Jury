@@ -14,7 +14,7 @@ public:
 #pragma region Constructors/Destructor
 	GroundEnemy() = delete;
 	GroundEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture, 
-		const float& xp, const unsigned int& givenScore);
+		const float& xp);
 	~GroundEnemy() = default;
 #pragma endregion
 
