@@ -16,6 +16,7 @@ void RetryState::Init()
 		return;
 	InputManager& _inputManager = _game->GetInputManager();
 	_inputManager.AddKeyEvent(sf::Event::KeyPressed, RETRY_KEY, this, &RetryState::EndState);
+	static_cast<RetryHUD*>(hud.get())->Init();
 	GameState::Init();
 }
 

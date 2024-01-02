@@ -16,9 +16,7 @@ public:
 #pragma endregion
 
 	/// <summary>
-	/// Move the player along a straight trajectory
-	/// The next formula is used to calculate owner's position :	X = V0.X * t + P0.X
-	///																Y = V0.Y * t + P0.Y
+	/// Move the entity by applying the velocity, resulting in a straight move.
 	/// </summary>
 	virtual void Move(const float& dt) override final;
 

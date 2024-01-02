@@ -64,9 +64,6 @@
     <Filter Include="Fichiers d%27en-tête\Factories">
       <UniqueIdentifier>{0d377bf2-58f9-4f04-99be-7f2fe6193a49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Factories">
-      <UniqueIdentifier>{630ad03c-f96c-4cfe-a5bb-67facd77922d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Entities\Enemies">
       <UniqueIdentifier>{66eb14d9-7edd-4fac-a229-6f99177b5aa9}</UniqueIdentifier>
     </Filter>
@@ -110,9 +107,6 @@
     </ClCompile>
     <ClCompile Include="Includes\UI\Private\Gauge.cpp">
       <Filter>Fichiers sources\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Includes\Factories\Private\CannonBallFactory.cpp">
-      <Filter>Fichiers sources\Factories</Filter>
     </ClCompile>
     <ClCompile Include="Includes\Entities\Private\Entity.cpp">
       <Filter>Fichiers sources\Entities</Filter>
@@ -183,6 +177,15 @@
     <ClCompile Include="Includes\UI\Private\TimerText.cpp">
       <Filter>Fichiers sources\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Includes\Game\GameStates\Private\StartState.cpp">
+      <Filter>Fichiers sources\Game\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\UI\Private\StartHUD.cpp">
+      <Filter>Fichiers sources\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Includes\Managers\Private\IOManager.cpp">
+      <Filter>Fichiers sources\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\Utils\Public\Singleton.h">
@@ -241,9 +244,6 @@
     </ClInclude>
     <ClInclude Include="Includes\Entities\Cannons\Public\CannonBall.h">
       <Filter>Fichiers d%27en-tête\Entities\Cannons</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes\Managers\Public\EntityManager.h">
-      <Filter>Fichiers d%27en-tête\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Includes\Interfaces\Public\IDelegate.h">
       <Filter>Fichiers d%27en-tête\Interfaces</Filter>
@@ -334,6 +334,21 @@
     </ClInclude>
     <ClInclude Include="Includes\UI\Public\TimerText.h">
       <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Game\GameStates\Public\StartState.h">
+      <Filter>Fichiers d%27en-tête\Game\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\UI\Public\StartHUD.h">
+      <Filter>Fichiers d%27en-tête\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Utils\Public\LerpAnimation.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\EntityManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\Managers\Public\IOManager.h">
+      <Filter>Fichiers d%27en-tête\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

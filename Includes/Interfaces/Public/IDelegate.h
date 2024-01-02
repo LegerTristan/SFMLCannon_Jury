@@ -7,7 +7,7 @@ template<typename T>
 using uptr = std::unique_ptr<T>;
 
 /// <summary>
-/// Interface thats executes something which can returns any type and takes any parameters.
+/// Interface that executes something which can returns any type and takes any parameters.
 /// </summary>
 /// <typeparam name="Res">Return type of Invoke method.</typeparam>
 /// <typeparam name="...Params">Parameters to use inside of the Invoke method.</typeparam>
@@ -30,6 +30,11 @@ public:
 
 protected:
 
+    /// <summary>
+    /// Compare two delegates. Override it in order to edit comparison conditions.
+    /// </summary>
+    /// <param name="_other">Other delegate to compare the current one with.</param>
+    /// <returns>True if the two delegates are the same, else false.</returns>
     virtual bool Compare(const IDelegate<Res, Params...>& _other) = 0;
 
 };
@@ -49,22 +54,20 @@ private:
 #pragma region Properties
     typedef Res(Class::* Function)(Params... _params);
 
-    Function function = nullptr;
-    Class* owner = nullptr;
+    Function function;
+    Class* owner;
 #pragma endregion
 public:
 #pragma region Constructors
-    MemberDelegate(nullptr_t)
-    {
-        owner = nullptr;
-        function = nullptr;
-    }
+    MemberDelegate(nullptr_t) :
+        owner(nullptr),
+        function(nullptr)
+    {}
 
-    MemberDelegate(Class* _instance, Function _function)
-    {
-        owner = _instance;
-        function = _function;
-    }
+    MemberDelegate(Class* _instance, Function _function) :
+        owner(_instance),
+        function(_function)
+    {}
 #pragma endregion
 
 #pragma region Methods
@@ -106,6 +109,12 @@ public:
 
 protected:
 
+    /// <summary>
+    /// Compare the owner and the function's pointer of the two delegates.
+    /// </summary>
+    /// <typeparam name="Res">Return type of the delegates</typeparam>
+    /// <typeparam name="Class">Function's class of the delegates</typeparam>
+    /// <typeparam name="...Params">Parameters of the function of each delegates.</typeparam>
     virtual bool Compare(const IDelegate<Res, Params...>& _other)
     {
         const MemberDelegate<Res, Class, Params...>* _delegate = static_cast<const MemberDelegate<Res, Class, Params...>*>(&_other);
@@ -116,6 +125,13 @@ protected:
     }
 };
 
+/// <summary>
+/// Template struct that invokes each delegate of a vector passed in parameters.
+/// This full template version takes into account the result type of the delegates.
+/// </summary>
+/// <param name="_delegates">Vector of delegates to invoke</param>
+/// <param name="..._params">Parameters to give to each delegates</param>
+/// <returns>Sum result of each delegates.</returns>
 template<typename Res, typename... Params>
 struct DelegateInvoker
 {
@@ -124,12 +140,17 @@ struct DelegateInvoker
         Res _result = Res();
         const size_t _size = _delegates.size();
         for (size_t i = 0; i < _size; ++i)
-            _result = _delegates[i]->Invoke(_params...);
+            _result += _delegates[i]->Invoke(_params...);
 
         return _result;
     }
 };
 
+/// <summary>
+/// Partialized template version of the DelegateInvoker struct.
+/// This does not take into account the result value and type.
+/// </summary>
+/// <param name="..._params">Parameters to give to each delegates</param>
 template<typename... Params>
 struct DelegateInvoker<void, Params...>
 {

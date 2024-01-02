@@ -1,6 +1,7 @@
 #include "ScoreText.h"
 #include "Utilities.h"
 #include "Game.h"
+#include "ScoreManager.h"
 
 ScoreText::ScoreText(sf::Font& _font, const sf::Color& _color, const sf::Vector2f& _pos, bool _displayPrefix) :
 	displayPrefix(_displayPrefix)
@@ -12,15 +13,19 @@ ScoreText::ScoreText(sf::Font& _font, const sf::Color& _color, const sf::Vector2
 	setFont(_font);
 
 	UpdateText(0);
-	Game::GetInstance()->GetScoreManager().OnScoreUpdated().AddDynamic(this, &ScoreText::UpdateText);
 }
 
 ScoreText::~ScoreText()
 {
-	Game* _game = Game::GetInstance();
+	if(scoreManager)
+		scoreManager->OnScoreUpdated().RemoveDynamic(this, &ScoreText::UpdateText);
+}
 
-	if(_game && _game->IsGameValid())
-		_game->GetScoreManager().OnScoreUpdated().RemoveDynamic(this, &ScoreText::UpdateText);
+void ScoreText::Init(sptr<ScoreManager> _scoreManager)
+{
+	scoreManager = _scoreManager;
+	if (scoreManager)
+		scoreManager->OnScoreUpdated().AddDynamic(this, &ScoreText::UpdateText);
 }
 
 void ScoreText::Draw(sf::RenderWindow& _window) const

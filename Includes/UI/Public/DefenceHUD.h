@@ -2,25 +2,25 @@
 #include "HUD.h"
 #include "ScoreText.h"
 #include "TimerText.h"
-#include "TimerCOmponent.h"
+#include "TimerComponent.h"
 
+/// <summary>
+/// Inherits from HUD.
+/// Contains level state HUD such as life bar, elapsedTime since the start or also current score.
+/// </summary>
 class DefenceHUD : public HUD
 {
 public:
 
+#pragma region Constructor/Destructor
 	DefenceHUD();
 	~DefenceHUD() = default;
+#pragma endregion
 
-	/// <summary>
-	/// Update text for the game timer
-	/// </summary>
-	/// <param name="currentTime">Current time of the game</param>
+	inline ScoreText& GetScoreText() { return scoreText; }
+
 	virtual void Update(const float& dt) override final;
 
-	/// <summary>
-	/// Draw all UI elements
-	/// </summary>
-	/// <param name="window">Game window</param>
 	virtual void Draw(sf::RenderWindow& window) const override final;
 
 protected:
@@ -28,11 +28,8 @@ protected:
 	/// <summary>
 	/// Background for the game's UI elements.
 	/// </summary>
-	sf::Sprite cloundBackground;
+	sf::Sprite cloudBackground;
 
-	/// <summary>
-	/// Text for displaying the timer
-	/// </summary>
 	TimerText timerText;
 
 	ScoreText scoreText;

@@ -4,7 +4,6 @@
 
 /// <summary>
 /// Contains the current time and delta time of the engine.
-/// Can be accessed via static call through the singleton instance.
 /// </summary>
 class TimeManager
 {
@@ -15,9 +14,7 @@ public:
 #pragma endregion
 
 #pragma region Getters/Setters
-	float GetDeltaTime() const;
-	float GetCurrentTime() const;
-	void SetPause(const bool& pause);
+	inline float GetDeltaTime() const { return deltaTime; }
 #pragma endregion
 
 #pragma region Methods
@@ -31,10 +28,7 @@ public:
 	/// </summary>
 	void UpdateLastTime();
 
-	/// <summary>
-	/// Calcul the deltaTime.
-	/// </summary>
-	float CalculateDeltaTime();
+	float ComputeDeltaTime();
 #pragma endregion
 private:
 
@@ -47,17 +41,12 @@ private:
 	/// <summary>
 	/// The currentTime saved by the manager (current frame) and the last time (last frame)
 	/// </summary>
-	sf::Time currentTime, lastTime, runTime;
+	sf::Time currentTime, lastTime;
 
 	/// <summary>
 	/// DeltaTime of the time between current frame and last frame.
 	/// </summary>
 	float deltaTime;
-
-	/// <summary>
-	/// Is the time currently paused or not.
-	/// </summary>
-	bool isPaused = false;
 #pragma endregion
 };
 

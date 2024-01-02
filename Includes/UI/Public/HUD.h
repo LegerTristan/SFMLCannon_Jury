@@ -8,7 +8,7 @@ template<typename T>
 using uptr = std::unique_ptr<T>;
 
 /// <summary>
-/// Contains UI elements that is bind to the game such as timer, wave flicker text.
+/// Contains mostly widgets that are drawn in a game state.
 /// </summary>
 class HUD
 {
@@ -21,9 +21,9 @@ public:
 #pragma endregion
 
 	/// <summary>
-	/// Update text for the game timer
+	/// Update all UI elements
 	/// </summary>
-	/// <param name="currentTime">Current delta time</param>
+	/// <param name="dt">Current delta time</param>
 	virtual void Update(const float& dt);
 
 	/// <summary>

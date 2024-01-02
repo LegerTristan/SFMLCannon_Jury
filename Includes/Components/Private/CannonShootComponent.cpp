@@ -39,8 +39,6 @@ void CannonShootComponent::Update(const float& _dt)
 	{
  		currentPower += loadSpeed * _dt;
 		currentPower = currentPower > maxPower ? maxPower : currentPower;
-		if (currentPower == maxPower)
-			int i = 10;
 
 		onLoadUp->Invoke(GetPowerPercentage());
 	}

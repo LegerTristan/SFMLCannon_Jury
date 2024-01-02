@@ -2,19 +2,16 @@
 
 #include "Entity.h"
 
+/// <summary>
+/// Entity that adds a collision component at initialization and triggers a delegate when it collides with any type 
+/// of collisions
+/// </summary>
 class KillZone : public Entity
 {
 public:
 
 #pragma region Constructor/Destructor
-	KillZone(const sf::Vector2f _position) : Entity(_position, 0), 
-		onKillZoneTriggered(std::make_unique<Action<const EEntityType&>>(nullptr))
-	{
-		sf::Texture _text = sf::Texture();
-		_text.create(10, 10);
-		setTexture(_text);
-	}
-
+	KillZone(const sf::Vector2f _position);
 	~KillZone() = default;
 #pragma endregion
 
@@ -27,5 +24,9 @@ protected:
 
 	virtual void OnCollide(const CollisionComponent& comp) override;
 
+	/// <summary>
+	/// Delegate invoked when something collides with the KillZone.
+	/// Give the type of entity that triggers the collision.
+	/// </summary>
 	uptr<Action<const EEntityType&>> onKillZoneTriggered;
 };

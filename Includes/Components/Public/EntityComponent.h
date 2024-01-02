@@ -25,8 +25,10 @@ public:
 	virtual ~EntityComponent() = default;
 #pragma endregion
 
+#pragma region Getters
 	inline virtual EEntityComponentType GetComponentType() const = 0;
 	inline wptr<Entity> GetOwner() const { return owner; }
+#pragma endregion
 
 	inline virtual void UpdateComponent(const float& dt) {}
 

@@ -7,27 +7,28 @@
 class CannonShootComponent;
 
 /// <summary>
-/// A progress bar used with other element to represent their progresion.
+/// A progress bar binded to CannonShootComponent in order to displays the current fire power of the cannon.
 /// </summary>
 class Gauge
 {
 public:
 
-	// CONSTRUCTOR & DESTRUCTOR
-
+#pragma region Constructors/Destructor
 	Gauge() = delete;
 	Gauge(CannonShootComponent& shootComp, sf::Vector2f position, bool isHorizontal);
 	Gauge(CannonShootComponent& shootComp, sf::Vector2f position, sf::Vector2f size, sf::Color gaugeColor, bool isHorizontal);
-	~Gauge() {}
+	~Gauge() = default;
+#pragma endregion
 
 	/// <summary>
-	/// Draw the 3 sprites of the gauge
+	/// Draw the gauge on the window
 	/// </summary>
 	/// <param name="window">Game window</param>
 	void Draw(sf::RenderWindow& window) const;
 
 private:
 
+#pragma region Properties
 	/// <summary>
 	/// Sprite of the empty part of the gauge, its size never change.
 	/// </summary>
@@ -54,16 +55,17 @@ private:
 	sf::Vector2f size;
 
 	/// <summary>
-	/// Tell if the gauge is horizontal or vertical
+	/// Is the gauge horizontal or vertical
 	/// </summary>
-	bool isHorizontal = false;
+	bool isHorizontal;
 
-	bool isVisible = false;
+	bool isVisible;
+#pragma endregion
 
 	/// <summary>
 	/// Fill the gauge by updating the size of the gauge value's sprite.
 	/// </summary>
-	/// <param name="fillValue">New value of the fill value of the gauge</param>
+	/// <param name="fillValue">New fill value of the gauge</param>
 	void Fill(const float& fillValue);
 
 	void ResetGauge(const float& power);

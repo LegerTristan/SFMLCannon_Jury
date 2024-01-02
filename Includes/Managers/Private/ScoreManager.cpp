@@ -1,4 +1,5 @@
 #include "ScoreManager.h"
+#include "Game.h"
 #include "HUD.h"
 #include "Constants.h"
 #include "EntityManager.h"
@@ -12,7 +13,7 @@ ScoreManager::ScoreManager() :
 		}
 	),
 	onScoreUpdated(std::make_unique<Action<const int&>>(nullptr)),
-	highScore(0),
+	highScore(Game::GetInstance()->GetIOManager().Read<int>(SCORE_SAVE_VALUE_NAME)),
 	score(0)
 {}
 
@@ -34,6 +35,19 @@ void ScoreManager::RegisterKillZone(KillZone& _killZone)
 void ScoreManager::UnregisterKillZone(KillZone& _killZone)
 {
 	_killZone.OnKillZoneTriggered().RemoveDynamic(this, &ScoreManager::DecreaseScore);
+}
+
+void ScoreManager::SaveScoreBehavior()
+{
+	Game* _game = Game::GetInstance();
+
+	if (!_game)
+		return;
+
+ 	if(score > highScore)
+		_game->GetIOManager().Save(score, SCORE_SAVE_VALUE_NAME);
+
+	_game->SetLatestScore(score);
 }
 
 void ScoreManager::UpdateScoreBehavior(const EEntityType& _type, float _scalar)

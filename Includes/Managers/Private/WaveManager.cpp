@@ -9,9 +9,8 @@
 WaveManager::WaveManager(sptr<EntityManager> _entityManager) :
 	enemiesSpawnTimeline(std::make_unique<TimerComponent<WaveManager>>(this, &WaveManager::SpawnEnemyBehavior, ENEMY_SPAWN_RATE, true)),
 	entityManager(_entityManager),
-	enemyMaxNbr(ENEMY_MAX_NBR_START),
-	enemyMaxNbrIncrement(ENEMY_MAX_NBR_INCREMENT),
-	currentEnemiesNbr(0)
+	maxEnemyNbr(ENEMY_MAX_NBR_START),
+	currentEnemyNbr(0)
 {
 	if (!_entityManager)
 		return;
@@ -30,7 +29,7 @@ inline void WaveManager::IncreaseEnemyNbrBehavior(const EEntityType& _type)
 	if (_type <= EEntityType::CANNON_BALL)
 		return;
 
-	currentEnemiesNbr++;
+	currentEnemyNbr++;
 }
 
 inline void WaveManager::DecreaseEnemyNbrBehavior(const EEntityType& _type)
@@ -38,12 +37,12 @@ inline void WaveManager::DecreaseEnemyNbrBehavior(const EEntityType& _type)
 	if (_type <= EEntityType::CANNON_BALL)
 		return;
 
-	currentEnemiesNbr--;
+	currentEnemyNbr--;
 }
 
 void WaveManager::SpawnEnemyBehavior()
 {
-	if (currentEnemiesNbr >= enemyMaxNbr)
+	if (currentEnemyNbr >= maxEnemyNbr)
 		return;
 
 	sptr<Entity> _entity = nullptr;

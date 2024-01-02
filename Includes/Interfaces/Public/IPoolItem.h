@@ -1,5 +1,8 @@
 #pragma once
 
+/// <summary>
+/// Interface class that represents an item that can be kept inside a pool container.
+/// </summary>
 class IPoolItem
 {
 public:

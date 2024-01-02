@@ -11,17 +11,7 @@ CannonBall::CannonBall(const sf::Vector2f _position)
 	setScale(sf::Vector2f(DEFAULT_BALL_SCALE, DEFAULT_BALL_SCALE));
 }
 
-void CannonBall::Enable()
-{
-	Entity::Enable();
-}
-
 void CannonBall::OnCollide(const CollisionComponent& _comp)
 {
 	onEntityKilled->Invoke(shared_from_this());
-}
-
-void CannonBall::Disable()
-{
-	Entity::Disable();
 }

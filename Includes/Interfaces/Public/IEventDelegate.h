@@ -11,8 +11,10 @@ using Scancode = sf::Keyboard::Scan::Scancode;
 class EventDelegate
 {
 public:
+#pragma region Constructor/Destructor
     EventDelegate(uptr<IDelegate<void>> _delegate) : eventDelegate(std::move(_delegate)) {}
     virtual ~EventDelegate() = default;
+#pragma endregion
 
     inline virtual void ExecuteEvent(sf::Event _event) = 0;
 
@@ -43,13 +45,13 @@ template<class TClass>
 class SimpleEventDelegate : public EventDelegate
 {
 public:
-
+#pragma region Constructor/Destructor
     inline SimpleEventDelegate(TClass* _ref, void(TClass::* _function)()) :
         EventDelegate(std::make_unique<MemberDelegate<void, TClass>>(_ref, _function))
-    {
-    }
+    {}
 
     ~SimpleEventDelegate() = default;
+#pragma endregion
 
 #pragma region Methods
     inline virtual void ExecuteEvent(sf::Event _event) override
@@ -83,15 +85,14 @@ template<class TClass>
 class KeyDelegate : public SimpleEventDelegate<TClass>
 {
 public:
-
+#pragma region Constructor/Destructor
     inline KeyDelegate(TClass* _ref, void (TClass::* _function)(), Scancode _key) :
         SimpleEventDelegate<TClass>(_ref, _function),
         key(_key)
-    {
-
-    }
+    {}
 
     ~KeyDelegate() = default;
+#pragma endregion
 
     inline virtual void ExecuteEvent(sf::Event _event) override final
     {

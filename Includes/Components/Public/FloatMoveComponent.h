@@ -2,11 +2,6 @@
 
 #include "MoveComponent.h"
 
-const float DEFAULT_FLOAT_VARIATION = 10.0f;	// Default float variation in floating upgrade
-const float FLOAT_VARIATION_SCALAR = 2.5f;		// Scalar for floating variation upgrade.
-
-const float FLOW_SPEED = 4.0f;				// Speed of the flow of time.
-
 /// <summary>
 /// Inherited from MoveComponent.
 /// Allows owner to move in a straight trajectory with a floating like movement on Y axis.
@@ -24,18 +19,18 @@ public:
 #pragma endregion
 
 	/// <summary>
-	/// Move the player along a straight trajectory with a floating like movement on Y axis.
-	/// The next formula is used to calculate owner's position :	X = V0.X * t + P0.X
-	///																Y = sinf(t) * mFloatVariation + P0.Y
+	/// Move the entity by applying the velocity with an oscillation on Y axis to simulate a float movement.
 	/// </summary>
 	virtual void Move(const float& dt) override final;
 
 private:
 
+#pragma region Properties
 	float floatAmplitude;
 
 	float floatFrequency;
 
 	float elapsedTime;
+#pragma endregion
 };
 

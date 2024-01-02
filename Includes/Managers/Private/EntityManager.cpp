@@ -14,11 +14,6 @@ EntityManager::EntityManager() :
 	entityManagers[EEntityType::WRAITH] = std::make_pair(std::make_unique<WraithFactory>(), std::make_unique<ObjectPool>());
 }
 
-void EntityManager::Init()
-{
-	Game::GetInstance()->GetScoreManager().RegisterEntityManager(*this);
-}
-
 sptr<Entity> EntityManager::SpawnEntity(EEntityType _entityType, const sf::Vector2f& _pos, 
 	const sf::Vector2f& _velocity)
 {
@@ -73,7 +68,6 @@ sptr<Entity> EntityManager::CreateNewEntityFromFactory(EEntityType _type, const 
 
 void EntityManager::UpdateEntities(sf::RenderWindow& _window, const float& _dt)
 {
-	// Update all entities
 	for (auto& _entity : activeEntities)
 	{
 		_entity->Update(_dt);

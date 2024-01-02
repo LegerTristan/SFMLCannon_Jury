@@ -1,51 +1,25 @@
 #include "TimeManager.h"
 
-TimeManager::TimeManager()
+TimeManager::TimeManager() :
+	clock(sf::Clock()),
+	currentTime(sf::Time()),
+	lastTime(sf::Time()),
+	deltaTime(0.0f)
 {
 	currentTime = clock.getElapsedTime();
-	deltaTime = 0.0f;
-}
-
-float TimeManager::GetDeltaTime() const
-{
-	return deltaTime;
-}
-
-float TimeManager::GetCurrentTime() const
-{
-	return currentTime.asSeconds();
-}
-
-void TimeManager::SetPause(const bool& _pause)
-{
-	isPaused = _pause;
-
-	if (isPaused)
-	{
-		runTime = currentTime;
-	}
-	else
-	{
-		clock.restart();
-	}
 }
 
 void TimeManager::UpdateCurrentTime()
 {
-	if(!isPaused)
-		currentTime = clock.getElapsedTime() + runTime;
+	currentTime = clock.getElapsedTime();
 }
 
 void TimeManager::UpdateLastTime()
 {
-	if(!isPaused)
-		lastTime = currentTime;
+	lastTime = currentTime;
 }
 
-float TimeManager::CalculateDeltaTime()
+float TimeManager::ComputeDeltaTime()
 {
-	if(!isPaused)
-		deltaTime = currentTime.asSeconds() - lastTime.asSeconds();
-
-	return deltaTime;
+	return deltaTime = currentTime.asSeconds() - lastTime.asSeconds();
 }

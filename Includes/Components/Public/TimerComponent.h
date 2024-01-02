@@ -5,25 +5,28 @@
 #include "IDelegate.h"
 
 /// <summary>
-/// A component that have is own timeline.
-/// Allow is owner to do an action through a certain time, repeat it, or juste get the current time of this timeline.
-/// The timeline flow is a float
+/// A component that triggers a delegate at the end of his timer.
+/// Allow its owner to do an action through a certain time, and also repeat it if necessary.
 /// </summary>
-/// <typeparam name="T">Owner class that we need in order to call an event of this class through the component.</typeparam>
+/// <typeparam name="T">Owner class used for the delegate.</typeparam>
 template<class TClass>
 class TimerComponent
 {
 public:
 
+#pragma region Constructor/Destructor
 	TimerComponent(TClass* _owner, void(TClass::* _ownerFunction)(), const float& _triggerRate, const bool& _repeatTrigger = false) :
 		timerDelegate(std::make_unique<MemberDelegate<void, TClass>>(_owner, _ownerFunction)),
 		triggerRate(_triggerRate),
-		currentTriggerTime(0.0f),
+		elapsedTime(0.0f),
 		repeat(_repeatTrigger),
 		isActive(false) {}
 
 	~TimerComponent() = default;
+#pragma endregion
 
+
+#pragma region PublicMethods
 	/// <summary>
 	/// Start the timeline.
     /// Means that the startTime is assigned at this moment, and the UpdateTimeline method willnow be called.
@@ -31,7 +34,7 @@ public:
 	inline void Start()
 	{
 		isActive = true;
-		currentTriggerTime = 0.0f;
+		elapsedTime = 0.0f;
 	}
 
 	/// <summary>
@@ -43,17 +46,19 @@ public:
 		if (!isActive)
 			return;
 
-		currentTriggerTime += _dt;
+		elapsedTime += _dt;
 
-		if (currentTriggerTime >= triggerRate)
+		if (elapsedTime >= triggerRate)
 		{
 			CallEvent();
 			Reset();
 		}
 	}
+#pragma endregion
 
 private:
 
+#pragma region PrivateMethods
 	/// <summary>
 	/// Call the event bind to the timeline component.
 	/// </summary>
@@ -68,7 +73,7 @@ private:
 	/// </summary>
 	void Reset()
 	{
-		currentTriggerTime = 0.0f;
+		elapsedTime = 0.0f;
 
 		if (repeat)
 			return;
@@ -76,26 +81,32 @@ private:
 		isActive = false;
 		timerDelegate = nullptr;
 	}
+#pragma endregion
 
+#pragma region Properties
+	/// <summary>
+	/// Delegate triggered when the timer reaches its end.
+	/// </summary>
 	uptr<MemberDelegate<void, TClass>> timerDelegate;
 
 	/// <summary>
-	/// Time when the event needs to be called
+	/// Elapsed timer since the start of the timer.
 	/// </summary>
-	float currentTriggerTime;
+	float elapsedTime;
 	
 	/// <summary>
-	/// Use with repeat trigger boolean, interval of time betwwen two call of event.
+	/// Time between each delegate's invoke
 	/// </summary>
 	float triggerRate;
 
 	/// <summary>
-	/// Tell if the timeline is currently active
+	/// Tell if the timer is currently active
 	/// </summary>
 	bool isActive;
 	
 	/// <summary>
-	/// Tell if the trigger for the event needs to be repeated until a possible end.
+	/// Tell if the trigger for the event needs to be repeated undefinitely.
 	/// </summary>
 	bool repeat;
+#pragma endregion
 };

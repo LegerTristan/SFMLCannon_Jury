@@ -61,7 +61,7 @@ void Entity::Disable()
 	isEnable = false;
 }
 
-void Entity::DecreaseLife()
+void Entity::DecrementLife()
 {
 	life--;
 }

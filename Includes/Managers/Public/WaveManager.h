@@ -5,7 +5,8 @@
 #include "EntityManager.h"
 
 /// <summary>
-/// Manager that handle all things in connection with the spawn of enemies such as mas spawn, or waves.
+/// Handles enemy appearance rate and maximum number at the same time.
+/// Defines also their spawn position.
 /// </summary>
 class WaveManager
 {
@@ -23,29 +24,24 @@ private:
 
 #pragma region Properties
 	/// <summary>
-	/// Timeline Component that handles appearance of the wave
+	/// Timer Component that handles appearance of the enemies
 	/// </summary>
 	uptr<TimerComponent<WaveManager>> enemiesSpawnTimeline;
 	
 	/// <summary>
-	/// Manager of the entities
+	/// Reference to the EntityManager in order to call SpawnEntity for enemies entity type. 
 	/// </summary>
 	sptr<EntityManager> entityManager;
 
 	/// <summary>
-	/// Total enemy max number at the same time. This member is not modified by the flow of time.
+	/// Total enemy max number at the same time.
 	/// </summary>
-	unsigned int enemyMaxNbr;
+	unsigned int maxEnemyNbr;
 
 	/// <summary>
-	/// Current enemy max number at the same time. This member is modified by the flow of time.
+	/// Curent enemies number present in the level.
 	/// </summary>
-	unsigned int enemyMaxNbrIncrement;
-
-	/// <summary>
-	/// Curent enemies number present if the level.
-	/// </summary>
-	unsigned int currentEnemiesNbr;
+	unsigned int currentEnemyNbr;
 #pragma endregion
 
 #pragma region PrivateMethods

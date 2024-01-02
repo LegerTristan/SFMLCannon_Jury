@@ -4,8 +4,7 @@
 
 /// <summary>
 /// Inherit from Enemy class.
-/// It is a special enemy that move with a straight trajectory.
-/// Perfect for representing ground enemy.
+/// Earthly enemy that moves straight forward.
 /// </summary>
 class GroundEnemy : public Enemy
 {
@@ -13,8 +12,7 @@ public:
 
 #pragma region Constructors/Destructor
 	GroundEnemy() = delete;
-	GroundEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture, 
-		const float& xp);
+	GroundEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture);
 	~GroundEnemy() = default;
 #pragma endregion
 

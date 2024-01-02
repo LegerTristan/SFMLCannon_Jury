@@ -33,9 +33,10 @@ void TimerText::UpdateText()
 	int _minutes = Utilities::ToMinutes(currentGameTime),
 		_seconds = Utilities::ToSeconds(currentGameTime);
 
-	char* _format = (char*)malloc(sizeof(char) * 6);
-	snprintf(_format, 6, "%02d:%02d", _minutes, _seconds);
+	const char* _format = FORMAT_CHARACTER_TIMER.c_str();
+	char* _buffer = (char*)malloc(sizeof(char) * NUMBER_CHARACTER_TIMER);
+	snprintf(_buffer, NUMBER_CHARACTER_TIMER, _format, _minutes, _seconds);
 
-	setString(_format);
-	free(_format);
+	setString(_buffer);
+	free(_buffer);
 }

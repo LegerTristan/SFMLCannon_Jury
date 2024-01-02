@@ -4,7 +4,8 @@
 #include "KillZone.h"
 #include "DefenceHUD.h"
 
-LevelState::LevelState() : 
+LevelState::LevelState() :
+	scoreManager(std::make_shared<ScoreManager>()),
 	GameState(std::make_unique<DefenceHUD>()),
 	entityManager(std::make_unique<EntityManager>()),
 	waveManager(std::make_unique<WaveManager>(entityManager)),
@@ -13,23 +14,20 @@ LevelState::LevelState() :
 	cannonBallsKillZone(std::make_shared<KillZone>(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT) + CB_KILL_ZONE_OFFSET)),
 	enemiesKillZone(std::make_shared<KillZone>(sf::Vector2f(0.0f, WINDOW_HEIGHT / 2) + ENEMIES_KILL_ZONE_OFFSET))
 {
+
 }
 
 void LevelState::Init()
 {
-	Game* _game = Game::GetInstance();
-
-	if (!_game)
-		return;
-
 	cannonBallsKillZone->Init(sf::Vector2f(WINDOW_WIDTH * 2, 0.0f) + CB_KILL_ZONE_EXTENT);
 	enemiesKillZone->Init(sf::Vector2f(0.0f, WINDOW_HEIGHT) + ENEMIES_KILL_ZONE_EXTENT);
 
 	player->BindToEnemiesKillZone(*enemiesKillZone);
 	player->OnPlayerLose().AddDynamic(this, &LevelState::PreparteEndState);
 
-	_game->GetScoreManager().RegisterKillZone(*enemiesKillZone);
-	_game->GetScoreManager().RegisterEntityManager(*entityManager);
+	scoreManager->RegisterKillZone(*enemiesKillZone);
+	scoreManager->RegisterEntityManager(*entityManager);
+	static_cast<DefenceHUD*>(hud.get())->GetScoreText().Init(scoreManager);
 	GameState::Init();
 }
 
@@ -60,5 +58,8 @@ void LevelState::EndState()
 	enemiesKillZone->Disable();
 	entityManager->DisableAllEntities();
 	cannon->Disable();
+	scoreManager->UnregisterKillZone(*enemiesKillZone);
+	scoreManager->RegisterEntityManager(*entityManager);
+	scoreManager->SaveScoreBehavior();
 	GameState::EndState();
 }

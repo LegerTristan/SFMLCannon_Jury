@@ -5,8 +5,9 @@
 #include "IDelegate.h"
 
 /// <summary>
-/// Tag of the collision component.
-/// Used to separate ball's collision from enemy's collision
+/// Type of the collision component.
+/// Used to separate ball's collision from enemy's collision.
+/// Works as a collision matrix.
 /// </summary>
 enum class ECollisionType
 {
@@ -17,7 +18,7 @@ enum class ECollisionType
 
 /// <summary>
 /// Inherit from Component.
-/// A component that allow an entity to collide with other entity that can collide.
+/// Gives a collision behavior to the entity.
 /// </summary>
 class CollisionComponent : public EntityComponent
 {
@@ -33,7 +34,7 @@ public:
 	inline Action<const CollisionComponent&>& OnCollide() const { return *onCollide; }
 	inline virtual EEntityComponentType GetComponentType() const override { return EEntityComponentType::COLLISION; }
 
-#pragma region Methods
+#pragma region PublicMethods
 	virtual void UpdateComponent(const float& dt) override final;
 
 	virtual void DrawComponent(sf::RenderWindow& _window) override final;
@@ -72,10 +73,15 @@ private:
 	const char collisionMask;
 #pragma endregion
 
+#pragma region PrivateMethods
+	/// <summary>
+	/// Call BindToCollisionManager and bind to owner's notifiers in order to handle binding logic.
+	/// </summary>
 	void InitBindings();
 
 	void BindToCollisionManager();
 
 	void UnbindFromCollisionManager(sptr<Entity> _owner);
+#pragma endregion
 };
 

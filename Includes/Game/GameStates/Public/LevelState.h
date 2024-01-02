@@ -4,14 +4,14 @@
 #include "GameState.h"
 #include "EntityManager.h"
 #include "Cannon.h"
+#include "ScoreManager.h"
 #include "Player.h"
 #include "WaveManager.h"
 
 class KillZone;
 
 /// <summary>
-/// Game class that handle all the necessary elements in order to make the game playable.
-/// All of his features is divided between managers and entities, except the management of the entities.
+/// Game state that handles the level part of the game.
 /// </summary>
 class LevelState : public GameState
 {
@@ -21,46 +21,39 @@ public:
 	~LevelState() = default;
 #pragma endregion
 
+#pragma region GameStateMethods
 	/// <summary>
 	/// Inherited from GameState
-	/// Initialize the time speed upgrade of wave manager and also the player, and the cannon.
-	/// Finally, initialize the level's background sprite, 
+	/// Initializes the kill zones and all necessary bindings between managers;
 	/// </summary>
 	void Init() override final;
 
 	/// <summary>
 	/// Main method call in the level loop.
-	/// Call all update methods of his managers and his entities.
-	/// Also draw the level background.
+	/// Call all Update and Draw methods of his managers.
 	/// </summary>
 	void Update(sf::RenderWindow& window, const float& dt) override final;
 
 protected:
 
+	/// <summary>
+	/// Disable all managers and make unregisters if necessary.
+	/// </summary>
 	virtual void EndState() override final;
+#pragma endregion
 
 private:
 
 #pragma region Properties
 
-	/// <summary>
-	/// Vector of Entity, it contains all the entities of the current game.
-	/// </summary>
 	sptr<EntityManager> entityManager;
 
-	/// <summary>
-	/// Wave manager that handle all the features based on the wave appearance and the current spawn of enemy.
-	/// </summary>
 	uptr<WaveManager> waveManager;
 
-	/// <summary>
-	/// Contains all members variables that are binded to the player such as XP.
-	/// </summary>
 	uptr<Player> player;
 
-	/// <summary>
-	/// Cannon that the player control in order to launch cannonball.
-	/// </summary>
+	sptr<ScoreManager> scoreManager;
+
 	sptr<Cannon> cannon;
 
 #pragma region KillZones
@@ -77,6 +70,9 @@ private:
 	sptr<KillZone> enemiesKillZone;
 #pragma endregion
 
+	/// <summary>
+	/// Condition to fulfilled to triggers EndState at the end of the next frame.
+	/// </summary>
 	bool endStateAtNextFrame = false;
 #pragma endregion
 

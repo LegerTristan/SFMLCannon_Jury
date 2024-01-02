@@ -4,7 +4,7 @@
 #include "Entity.h"
 
 /// <summary>
-/// Component that allows is Owner to move based on a velocity passed in constructor
+/// Abstract component that allows is entity's owner to move based on a velocity passed in constructor
 /// Move method needs to be override.
 /// </summary>
 class MoveComponent : public EntityComponent
@@ -17,6 +17,7 @@ public:
 	virtual ~MoveComponent() = default;
 #pragma endregion 
 	
+#pragma region Methods
 	inline virtual EEntityComponentType GetComponentType() const override { return EEntityComponentType::MOVE; }
 	inline void SetVelocity(const sf::Vector2f& _velocity) { velocity = _velocity; }
 
@@ -25,15 +26,14 @@ public:
 protected:
 
 	/// <summary>
-	/// Velocity of the component and so the Owner.
-	/// </summary>
-	sf::Vector2f velocity;
-
-#pragma region Methods
-	/// <summary>
 	/// Virtual pure method to move the owner along a predifined type of Movement
 	/// </summary>
 	virtual void Move(const float& dt) = 0;
 #pragma endregion
+
+	/// <summary>
+	/// Velocity of the component and so the Owner.
+	/// </summary>
+	sf::Vector2f velocity;
 };
 

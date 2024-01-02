@@ -8,16 +8,15 @@
 #include "Singleton.h"
 #include "CollisionManager.h"
 #include "ScoreManager.h"
+#include "IOManager.h"
 
 using namespace sf;
 
-const Color CLEAR_COLOR = Color(240, 240, 240, 255);	// Background color when window clear method is called.
-
 /// <summary>
-/// Main class. Handle GameState and update the last one that will be displayed on screen.
-/// Contains also a TimeManager and TextureManager to handle elements that is necessary in every state.
+/// Main class. Handle GameStates and update the first one on the queue.
+/// Contains also some managers that are more specific to the game instead of a state.
 /// </summary>
-class Game : public Singleton<Game>, public std::enable_shared_from_this<Game>
+class Game : public Singleton<Game>
 {
 public:
 
@@ -31,26 +30,28 @@ public:
 	inline TextureManager& GetTextureManager() const { return *textureManager; }
 	inline InputManager& GetInputManager() const { return *inputManager; }
 	inline CollisionManager& GetCollisionManager() const { return *collisionManager; }
-	inline ScoreManager& GetScoreManager() const { return *scoreManager; }
+	inline IOManager& GetIOManager() const { return *ioManager; }
+	inline int GetLatestScore() const { return latestScore; }
+	inline void SetLatestScore(const int& _score) { latestScore = _score; }
 #pragma endregion
 
 #pragma region PublicMethods
 	inline bool IsGameValid() const { return timeManager != nullptr && textureManager != nullptr 
-		&& inputManager != nullptr && collisionManager != nullptr && scoreManager != nullptr; }
+		&& inputManager != nullptr && collisionManager != nullptr && ioManager != nullptr; }
 
 	/// <summary>
-	/// Add a new state to the stack of states in the game and init state's features.
+	/// Add a new state to the queue of states in the game and bind OnStateEnd to game's RemoveState method.
 	/// </summary>
 	/// <param name="newState">New state to add in the game</param>
 	void AddState(uptr<GameState> newState);
 
 	/// <summary>
-	/// Call the method Update(RenderWindow* window) of the last state in the stack
+	/// Call the Update method of the front state in the queue
 	/// </summary>
 	void UpdateState(const float& dt);
 
 	/// <summary>
-	/// Remove the last state in the stack
+	/// Remove the front state in the queue.
 	/// </summary>
 	void RemoveState();
 
@@ -86,11 +87,25 @@ private:
 	/// </summary>
 	uptr<TextureManager> textureManager;
 
+	/// <summary>
+	/// Handles input logics and bindings to any events
+	/// </summary>
 	uptr<InputManager> inputManager;
 
+	/// <summary>
+	/// Handles collisions in the game.
+	/// </summary>
 	uptr<CollisionManager> collisionManager;
 
-	uptr<ScoreManager> scoreManager;
+	/// <summary>
+	/// Handles I/O manipulations in the game.
+	/// </summary>
+	uptr<IOManager> ioManager;
+
+	/// <summary>
+	/// Stock the latest score made in the level.
+	/// </summary>
+	int latestScore;
 #pragma endregion
 	
 #pragma region PrivateMethods

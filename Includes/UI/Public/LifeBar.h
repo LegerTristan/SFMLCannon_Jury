@@ -28,6 +28,7 @@ public:
 
 private:
 
+#pragma region Properties
 	/// <summary>
 	/// Sprites used to represent life points of the player
 	/// </summary>
@@ -39,6 +40,7 @@ private:
 	sf::Vector2f position;
 
 	unsigned int qtyToDraw = 0;
+#pragma endregion
 
 	inline void UpdateQtyToDraw(const unsigned int& _qtyToDraw) { qtyToDraw = _qtyToDraw;  }
 };

@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Constants.h"
+#include "StartState.h"
 #include "LevelState.h"
 #include "RetryState.h"
 
@@ -9,7 +10,7 @@ Game::Game() :
     textureManager(std::make_unique<TextureManager>()),
     inputManager(std::make_unique<InputManager>()),
     collisionManager(std::make_unique<CollisionManager>()),
-    scoreManager(std::make_unique<ScoreManager>())
+    ioManager(std::make_unique<IOManager>())
 {
 }
 
@@ -19,7 +20,7 @@ Game::~Game()
     textureManager = nullptr;
     inputManager = nullptr;
     collisionManager = nullptr;
-    scoreManager = nullptr;
+    ioManager = nullptr;
 }
 
 void Game::StartGame()
@@ -27,8 +28,9 @@ void Game::StartGame()
     if (!IsGameValid())
         return;
 
-    RestartGame();
+    AddState(std::make_unique<StartState>());
     inputManager->AddEvent(sf::Event::Closed, this, &Game::CloseGame);
+    ioManager->Init();
     LoopGame();
 }
 
@@ -37,7 +39,7 @@ void Game::LoopGame()
     while (window.isOpen())
     {
         timeManager->UpdateCurrentTime();
-        const float _dt = timeManager->CalculateDeltaTime();
+        const float _dt = timeManager->ComputeDeltaTime();
 
         inputManager->ListenEvents(window);
 

@@ -4,8 +4,7 @@
 
 /// <summary>
 /// Inherit from Enemy class.
-/// It is a special enemy that move with a floating trajectory.
-/// Perfect for representing aerial enemy.
+/// Flying enemy that moves straight forward with a floating effect.
 /// </summary>
 class FloatEnemy : public Enemy
 {
@@ -13,8 +12,7 @@ public:
 
 #pragma region Constructors / Destructor
 	FloatEnemy() = delete;
-	FloatEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture,
-		const float& xp);
+	FloatEnemy(const sf::Vector2f position, const sf::Texture& enemyTexture);
 	~FloatEnemy() = default;
 #pragma endregion
 

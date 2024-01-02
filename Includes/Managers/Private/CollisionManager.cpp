@@ -8,10 +8,10 @@
 
 CollisionManager::CollisionManager() :
 	physicsCheckRate(PHYSIC_CHECK_RATE),
-	physicsTimer(std::make_unique<TimerComponent<CollisionManager>>(this, &CollisionManager::UpdateCollision, physicsCheckRate, true))
+	collisionTimer(std::make_unique<TimerComponent<CollisionManager>>(this, &CollisionManager::UpdateCollision, physicsCheckRate, true))
 {
-	if(physicsTimer)
-		physicsTimer->Start();
+	if(collisionTimer)
+		collisionTimer->Start();
 }
 
 void CollisionManager::RegisterCollisionComponent(CollisionComponent* _comp)
@@ -22,8 +22,8 @@ void CollisionManager::RegisterCollisionComponent(CollisionComponent* _comp)
 
 void CollisionManager::Update(const float& _dt)
 {
-	if (physicsTimer)
-		physicsTimer->UpdateTimer(_dt);
+	if (collisionTimer)
+		collisionTimer->UpdateTimer(_dt);
 }
 
 void CollisionManager::UnregisterCollisionComponent(CollisionComponent* _comp)

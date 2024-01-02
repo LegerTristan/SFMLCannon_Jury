@@ -166,14 +166,15 @@
     <ClCompile Include="Includes\Entities\Enemies\Private\GroundEnemy.cpp" />
     <ClCompile Include="Includes\Entities\Private\Entity.cpp" />
     <ClCompile Include="Includes\Entities\Private\KillZone.cpp" />
-    <ClCompile Include="Includes\Factories\Private\CannonBallFactory.cpp" />
     <ClCompile Include="Includes\Game\GameStates\Private\GameState.cpp" />
     <ClCompile Include="Includes\Game\GameStates\Private\LevelState.cpp" />
     <ClCompile Include="Includes\Game\GameStates\Private\RetryState.cpp" />
+    <ClCompile Include="Includes\Game\GameStates\Private\StartState.cpp" />
     <ClCompile Include="Includes\Game\Private\Game.cpp" />
     <ClCompile Include="Includes\Managers\Private\CollisionManager.cpp" />
     <ClCompile Include="Includes\Managers\Private\EntityManager.cpp" />
     <ClCompile Include="Includes\Managers\Private\InputManager.cpp" />
+    <ClCompile Include="Includes\Managers\Private\IOManager.cpp" />
     <ClCompile Include="Includes\Managers\Private\Player.cpp" />
     <ClCompile Include="Includes\Managers\Private\ScoreManager.cpp" />
     <ClCompile Include="Includes\Managers\Private\TextureManager.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="Includes\UI\Private\LifeBar.cpp" />
     <ClCompile Include="Includes\UI\Private\RetryHUD.cpp" />
     <ClCompile Include="Includes\UI\Private\ScoreText.cpp" />
+    <ClCompile Include="Includes\UI\Private\StartHUD.cpp" />
     <ClCompile Include="Includes\UI\Private\TimerText.cpp" />
     <ClCompile Include="SFMLCannon.cpp" />
   </ItemGroup>
@@ -214,6 +216,7 @@
     <ClInclude Include="Includes\Game\GameStates\Public\GameState.h" />
     <ClInclude Include="Includes\Game\GameStates\Public\LevelState.h" />
     <ClInclude Include="Includes\Game\GameStates\Public\RetryState.h" />
+    <ClInclude Include="Includes\Game\GameStates\Public\StartState.h" />
     <ClInclude Include="Includes\Game\Public\Game.h" />
     <ClInclude Include="Includes\Interfaces\Public\IDelegate.h" />
     <ClInclude Include="Includes\Interfaces\Public\IEntityFactory.h" />
@@ -222,6 +225,7 @@
     <ClInclude Include="Includes\Managers\Public\CollisionManager.h" />
     <ClInclude Include="Includes\Managers\Public\EntityManager.h" />
     <ClInclude Include="Includes\Managers\Public\InputManager.h" />
+    <ClInclude Include="Includes\Managers\Public\IOManager.h" />
     <ClInclude Include="Includes\Managers\Public\Player.h" />
     <ClInclude Include="Includes\Managers\Public\ScoreManager.h" />
     <ClInclude Include="Includes\Managers\Public\TextureManager.h" />
@@ -233,9 +237,11 @@
     <ClInclude Include="Includes\UI\Public\LifeBar.h" />
     <ClInclude Include="Includes\UI\Public\RetryHUD.h" />
     <ClInclude Include="Includes\UI\Public\ScoreText.h" />
+    <ClInclude Include="Includes\UI\Public\StartHUD.h" />
     <ClInclude Include="Includes\UI\Public\TimerText.h" />
     <ClInclude Include="Includes\Utils\Public\Constants.h" />
     <ClInclude Include="Includes\Utils\Public\json.hpp" />
+    <ClInclude Include="Includes\Utils\Public\LerpAnimation.h" />
     <ClInclude Include="Includes\Utils\Public\ObjectPool.h" />
     <ClInclude Include="Includes\Utils\Public\Singleton.h" />
     <ClInclude Include="Includes\Utils\Public\Utilities.h" />

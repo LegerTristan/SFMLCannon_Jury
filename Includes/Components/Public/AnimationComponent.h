@@ -35,6 +35,7 @@ public:
 
 private:
 
+#pragma region Properties
 	/// <summary>
 	/// Frames of the animation.
 	/// </summary>
@@ -54,5 +55,6 @@ private:
 	/// Index of the current frame.
 	/// </summary>
 	unsigned int frameIndex;
+#pragma endregion
 };
 

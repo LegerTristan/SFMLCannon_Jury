@@ -10,6 +10,7 @@ using Scancode = sf::Keyboard::Scan::Scancode;
 /// <summary>
 /// Component that rotates a Sprite based on two inputs handled by the InputManager.
 /// It rotates the sprite smoothly meaning that the rotation is updated every frame while one of the keys is pressed.
+/// Component can be disabled through Disable method.
 /// </summary>
 class InputRotationComponent
 {
@@ -32,6 +33,9 @@ private:
 #pragma region Properties
 	sptr<sf::Sprite> spriteToRotate;
 
+	/// <summary>
+	/// Up keys and down keys used respectively for up rotation and down rotation
+	/// </summary>
 	Scancode rotKeyUp,
 			 rotKeyDown;
 
@@ -44,7 +48,7 @@ private:
 		 isComponentEnabled = true;
 #pragma endregion
 
-#pragma region Methods
+#pragma region PrivateMethods
 	inline void EnableRotationIncreased() { isRotationIncreased = true; }
 	inline void DisableRotationIncreased() { isRotationIncreased = false; }
 

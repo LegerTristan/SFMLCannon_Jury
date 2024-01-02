@@ -15,12 +15,14 @@ protected:
 
 	static TSingleton* instance;
 
-	Singleton() = default;
-	virtual ~Singleton() = default;
-
 public:
 
+#pragma region Constructors/Destructor
+	Singleton() = default;
 	Singleton(const Singleton&) = delete;
+	virtual ~Singleton() = default;
+#pragma endregion
+
 	Singleton& operator=(const Singleton&) = delete;
 
 	inline static TSingleton* GetInstance()
